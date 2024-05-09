@@ -1,5 +1,6 @@
 package com.wandering.Do.domain.user.entity;
 
+import com.wandering.Do.domain.declare.Case;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,4 +35,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Class aClass;
+
+    @Enumerated(EnumType.STRING)
+    private Case aCase = Case.NORMAL;
 }
