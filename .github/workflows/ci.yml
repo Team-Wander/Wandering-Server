@@ -25,4 +25,4 @@ jobs:
         uses: gradle/gradle-build-action@v3 # v3.1.0
 
       - name: Build with Gradle
-        run: chmod +x ./gradlew && ./gradlew build
+        run: chmod +x ./gradlew && ./gradlew build --warning-mode all
