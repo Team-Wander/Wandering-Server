@@ -36,6 +36,4 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Class aClass;
 
-    @Enumerated(EnumType.STRING)
-    private Case aCase = Case.NORMAL;
 }
