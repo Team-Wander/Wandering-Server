@@ -1,6 +1,5 @@
 package com.wandering.Do.domain.user.entity;
 
-import com.wandering.Do.domain.declare.Case;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "UUID4")
     private UUID id;
 
     private String username;
@@ -34,6 +33,6 @@ public class User {
     private Grade grade;
 
     @Enumerated(EnumType.STRING)
-    private Class aClass;
+    private ClassNum classNum;
 
 }

@@ -1,6 +1,6 @@
 package com.wandering.Do.domain.user.entity;
 
-public enum Class {
+public enum ClassNum {
     ONE,
     TWO,
     THREE,
