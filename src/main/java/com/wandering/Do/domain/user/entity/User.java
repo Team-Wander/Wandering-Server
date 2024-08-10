@@ -18,16 +18,20 @@ public class User {
     @GeneratedValue(generator = "UUID4")
     private UUID id;
 
-    private String username;
-
-    private String password;
-
     private String name;
 
     private String school;
 
+    private String email;
+
+    private String gender;
+
+    private String mobile;
+
+    private String birthYear;
+
     @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private Authority authority;
 
     @Enumerated(EnumType.STRING)
     private Grade grade;
