@@ -1,10 +1,12 @@
 package com.wandering.Do.global.security.jwt;
 
+import com.wandering.Do.domain.auth.presentation.dto.response.TokenInfo;
 import com.wandering.Do.global.exception.CustomException;
 import com.wandering.Do.global.exception.ErrorCode;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +24,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
@@ -37,33 +40,30 @@ public class JwtTokenProvider {
 
     private static Key key;
 
+    @PostConstruct
     public void init() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         key = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public TokenInfo generateToken(Authentication authentication) {
+    public TokenInfo generateToken(UUID userId) {
         return TokenInfo.builder()
                 .grantType(GRANT_TYPE)
-                .accessToken(generateAccessToken(authentication))
+                .accessToken(generateAccessToken(userId))
                 .accessTokenExpiresIn(LocalDateTime.now().plusSeconds(ACCESS_TOKEN_TIME))
                 .build();
     }
 
     // accessToken 생성
-    public String generateAccessToken(Authentication authentication) {
-        // 권한 가져오기
-        String authorities = authentication.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.joining(","));
+    public String generateAccessToken(UUID uuid) {
 
         long now = (new Date()).getTime();
 
         Date accessTokenExpiresIn = new Date(now + ACCESS_TOKEN_TIME);
 
         return Jwts.builder()
-                .setSubject(authentication.getName())
-                .claim(AUTHORITIES, authorities)
+                .setSubject(uuid.toString())
+                .claim(AUTHORITIES, "JWT")
                 .setExpiration(accessTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();

@@ -1,4 +1,4 @@
-package com.wandering.Do.global.security.jwt;
+package com.wandering.Do.domain.auth.presentation.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
