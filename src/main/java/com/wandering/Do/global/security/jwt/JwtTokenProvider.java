@@ -3,6 +3,7 @@ package com.wandering.Do.global.security.jwt;
 import com.wandering.Do.domain.auth.presentation.dto.response.TokenInfo;
 import com.wandering.Do.global.exception.CustomException;
 import com.wandering.Do.global.exception.ErrorCode;
+import com.wandering.Do.global.security.auth.AuthDetailsService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -31,14 +32,15 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JwtTokenProvider {
 
-    private static final long ACCESS_TOKEN_TIME = 1000 * 60 * 30L;
     private static final String AUTHORITIES = "auth";
     private static final String GRANT_TYPE = "Bearer";
+    private static final long ACCESS_TOKEN_TIME = 1000 * 60 * 30L;
+    private static final long REFRESH_TOKEN_TIME = 1000 * 60 * 60 * 24 * 7L;
 
     @Value("${jwt.secret}")
     private String secretKey;
-
     private static Key key;
+    private final AuthDetailsService authDetailsService;
 
     @PostConstruct
     public void init() {
@@ -50,7 +52,9 @@ public class JwtTokenProvider {
         return TokenInfo.builder()
                 .grantType(GRANT_TYPE)
                 .accessToken(generateAccessToken(userId))
+                .refreshToken(generateRefreshToken(userId))
                 .accessTokenExpiresIn(LocalDateTime.now().plusSeconds(ACCESS_TOKEN_TIME))
+                .refreshTokenExpiresIn(LocalDateTime.now().plusSeconds(REFRESH_TOKEN_TIME))
                 .build();
     }
 
@@ -69,6 +73,19 @@ public class JwtTokenProvider {
                 .compact();
     }
 
+    // refreshToken 생성
+    public String generateRefreshToken(UUID uuid) {
+        long now = (new Date()).getTime();
+
+        Date refreshTokenExpiresIn = new Date(now + REFRESH_TOKEN_TIME);
+
+        return Jwts.builder()
+                .setSubject(uuid.toString())
+                .setExpiration(refreshTokenExpiresIn)
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
     // jwt 토큰을 복호화하여 토큰에 들어있는 정보를 꺼내는 메서드
     public Authentication getAuthentication (String accessToken) {
         Claims claims = parseClaims(accessToken);
@@ -77,13 +94,8 @@ public class JwtTokenProvider {
             throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
 
-        Collection<? extends GrantedAuthority> authorities =
-                Arrays.stream(claims.get(AUTHORITIES).toString().split(","))
-                        .map(SimpleGrantedAuthority::new)
-                        .toList();
-
-        UserDetails principal = new User(claims.getSubject(), "", authorities);
-        return new UsernamePasswordAuthenticationToken(principal, "", authorities);
+        UserDetails principal = authDetailsService.loadUserByUsername(claims.getSubject());
+        return new UsernamePasswordAuthenticationToken(principal, "", principal.getAuthorities());
     }
 
     private Claims parseClaims(String accessToken) {
