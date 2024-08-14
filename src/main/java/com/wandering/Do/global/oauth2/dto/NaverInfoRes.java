@@ -15,7 +15,7 @@ public class NaverInfoRes {
     @JsonIgnoreProperties(ignoreUnknown = true)
     static class Response {
         private String email;
-        private String nickname;
+        private String name;
         private String gender;
         private String birthyear;
         private String mobile;
@@ -26,7 +26,7 @@ public class NaverInfoRes {
     }
 
     public String getNickname() {
-        return response.nickname;
+        return response.name;
     }
 
     public String getGender() {
