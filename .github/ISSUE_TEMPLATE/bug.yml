@@ -22,7 +22,7 @@ body:
         3. 403 Forbidden 에러 표출
       render: bash
     validations:
-      required: true
+      required: false
   - type: textarea
     id: screenshoot
     attributes:
