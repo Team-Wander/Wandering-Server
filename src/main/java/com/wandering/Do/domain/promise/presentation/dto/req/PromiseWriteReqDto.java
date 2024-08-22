@@ -5,6 +5,7 @@ import com.wandering.Do.domain.promise.entity.Contact;
 import com.wandering.Do.domain.promise.entity.Tag;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -31,5 +32,6 @@ public class PromiseWriteReqDto {
 
     private Integer maximum;
 
+    @NotNull
     private List<Tag> tags;
 }

@@ -2,6 +2,7 @@ package com.wandering.Do.domain.promise.service.impl;
 
 import com.wandering.Do.domain.promise.entity.Contact;
 import com.wandering.Do.domain.promise.entity.Promise;
+import com.wandering.Do.domain.promise.entity.Stats;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReqDto;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.WriteBoardService;
@@ -22,14 +23,34 @@ public class WriteBoardServiceImpl implements WriteBoardService {
     @Override
     public void execute(PromiseWriteReqDto writeReqDto) {
 
+        LocalDate now = LocalDate.now();
+        Stats stats;
+
+        // 작성된 날짜와 현재 날짜를 비교하여 상태를 결정
+        if (writeReqDto.getDate().isAfter(now)) {
+            stats = Stats.PENDING;
+        } else if (writeReqDto.getDate().isEqual(now)) {
+            stats = Stats.NOW;
+        } else {
+            stats = Stats.PAST;
+        }
+
+        Contact contact = new Contact(
+                writeReqDto.getContact().getInstagram(),
+                writeReqDto.getContact().getDiscord(),
+                writeReqDto.getContact().getKakao(),
+                writeReqDto.getContact().getEmail()
+        );
+
         Promise promise = Promise.builder()
                 .title(writeReqDto.getTitle())
                 .content(writeReqDto.getContent())
-                .contact(new Contact())
-                .date(LocalDate.now())
+                .contact(contact)  // Dto에서 받은 Contact 사용
+                .date(writeReqDto.getDate())  // 작성된 약속 시간 사용
                 .spot(writeReqDto.getSpot())
                 .maximum(writeReqDto.getMaximum())
-                .tags(writeReqDto.getTags())
+                .tags(writeReqDto.getTags())  // Dto에서 받은 Tags 사용
+                .stats(stats)
                 .build();
 
         promiseRepository.save(promise);
