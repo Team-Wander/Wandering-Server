@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class Promise {
 
     private String content;
 
-    private String data;
+    private LocalDate date;
 
     private String spot;
 
