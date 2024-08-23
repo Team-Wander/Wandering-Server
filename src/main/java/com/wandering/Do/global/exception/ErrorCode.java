@@ -16,7 +16,8 @@ public enum ErrorCode {
     USER_NOT_FOUND(404, "해당 유저를 찾을 수 없습니다"),
 
     //promise
-    BOARD_NOT_FOUND(404, "해당 글을 찾을 수 없습니다");
+    BOARD_NOT_FOUND(404, "해당 글을 찾을 수 없습니다"),
+    INVALID_DATE(400, "날짜는 현재보다 이전일 수 없습니다.");
 
     private final int httpStatus;
     private final String message;

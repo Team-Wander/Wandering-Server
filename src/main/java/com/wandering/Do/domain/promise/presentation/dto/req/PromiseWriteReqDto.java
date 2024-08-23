@@ -32,6 +32,5 @@ public class PromiseWriteReqDto {
 
     private Integer maximum;
 
-    @NotNull
     private List<Tag> tags;
 }

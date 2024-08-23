@@ -3,6 +3,7 @@ package com.wandering.Do.domain.promise.service.impl;
 import com.wandering.Do.domain.promise.entity.Contact;
 import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.entity.Stats;
+import com.wandering.Do.domain.promise.exception.InvalidDateException;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReqDto;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.WriteBoardService;
@@ -24,12 +25,18 @@ public class WriteBoardServiceImpl implements WriteBoardService {
     public void execute(PromiseWriteReqDto writeReqDto) {
 
         LocalDate now = LocalDate.now();
+        LocalDate requestDate = writeReqDto.getDate();
+
+        if (requestDate.isBefore(now)) {
+            throw new InvalidDateException();
+        }
+
         Stats stats;
 
         // 작성된 날짜와 현재 날짜를 비교하여 상태를 결정
-        if (writeReqDto.getDate().isAfter(now)) {
+        if (requestDate.isAfter(now)) {
             stats = Stats.PENDING;
-        } else if (writeReqDto.getDate().isEqual(now)) {
+        } else if (requestDate.isEqual(now)) {
             stats = Stats.NOW;
         } else {
             stats = Stats.PAST;
