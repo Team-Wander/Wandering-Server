@@ -1,6 +1,8 @@
 package com.wandering.Do.domain.auth.service.impl;
 
+import com.wandering.Do.domain.auth.RefreshToken;
 import com.wandering.Do.domain.auth.presentation.dto.response.TokenInfo;
+import com.wandering.Do.domain.auth.repository.RefreshTokenRepository;
 import com.wandering.Do.domain.auth.service.SignInService;
 import com.wandering.Do.domain.user.entity.Authority;
 import com.wandering.Do.domain.user.entity.User;
@@ -10,6 +12,7 @@ import com.wandering.Do.domain.auth.presentation.dto.request.SignInReq;
 import com.wandering.Do.global.oauth2.service.RequestOAuth2InfoService;
 import com.wandering.Do.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
+import org.antlr.v4.runtime.Token;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -21,13 +24,17 @@ public class SignInServiceImpl implements SignInService {
     private final JwtTokenProvider jwtTokenProvider;
     private final UserRepository userRepository;
     private final RequestOAuth2InfoService requestOAuth2InfoService;
+    private final RefreshTokenRepository refreshTokenRepository;
 
 
     public TokenInfo execute(SignInReq params) {
         NaverInfoRes info = requestOAuth2InfoService.request(params);
         UUID userId = findOrCreateMember(info);
 
-        return jwtTokenProvider.generateToken(userId);
+        TokenInfo tokenInfo = jwtTokenProvider.generateToken(userId);
+        saveRefreshToken(tokenInfo.getRefreshToken(), userId);
+
+        return tokenInfo;
     }
 
     private UUID findOrCreateMember(NaverInfoRes naverInfoRes) {
@@ -49,6 +56,15 @@ public class SignInServiceImpl implements SignInService {
         userRepository.save(user);
 
         return user.getId();
+    }
+
+    private void saveRefreshToken(String token, UUID userId) {
+        RefreshToken refreshToken = RefreshToken.builder()
+                .id(token)
+                .userId(userId)
+                .build();
+
+        refreshTokenRepository.save(refreshToken);
     }
 
 }
