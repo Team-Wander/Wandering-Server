@@ -1,6 +1,7 @@
 package com.wandering.Do.domain.promise.service.impl;
 import com.wandering.Do.domain.promise.entity.Contact;
 import com.wandering.Do.domain.promise.entity.Promise;
+import com.wandering.Do.domain.promise.entity.Stats;
 import com.wandering.Do.domain.promise.exception.InvalidDateException;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReqDto;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
@@ -29,6 +30,8 @@ public class WriteBoardServiceImpl implements WriteBoardService {
             throw new InvalidDateException();
         }
 
+        Stats stats = Stats.PENDING;
+
         Contact contact = new Contact(
                 writeReqDto.getContact().getInstagram(),
                 writeReqDto.getContact().getDiscord(),
@@ -44,6 +47,7 @@ public class WriteBoardServiceImpl implements WriteBoardService {
                 .spot(writeReqDto.getSpot())
                 .maximum(writeReqDto.getMaximum())
                 .tags(writeReqDto.getTags())
+                .stats(stats)
                 .build();
 
         promiseRepository.save(promise);
