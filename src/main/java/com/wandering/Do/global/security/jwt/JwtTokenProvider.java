@@ -28,14 +28,17 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import static com.wandering.Do.global.security.filter.JwtFilter.AUTHORIZATION_HEADER;
+
 @Component
 @RequiredArgsConstructor
 public class JwtTokenProvider {
 
     private static final String AUTHORITIES = "auth";
     private static final String GRANT_TYPE = "Bearer";
+    private static final String TOKEN_PREFIX = "Bearer ";
     private static final long ACCESS_TOKEN_TIME = 1000 * 60 * 30L;
-    private static final long REFRESH_TOKEN_TIME = 1000 * 60 * 60 * 24 * 7L;
+    private static final long REFRESH_TOKEN_TIME = 1000L * 60 * 60 * 24 * 7;
 
     @Value("${jwt.secret}")
     private String secretKey;
@@ -81,6 +84,7 @@ public class JwtTokenProvider {
 
         return Jwts.builder()
                 .setSubject(uuid.toString())
+                .claim(AUTHORITIES, "JWT")
                 .setExpiration(refreshTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
@@ -120,11 +124,19 @@ public class JwtTokenProvider {
     }
 
     public String resolveToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer")) {
+        String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(TOKEN_PREFIX)) {
             return bearerToken.substring(7);
         }
 
         return null;
+    }
+
+    public String parseRefreshToken(String refreshToken) {
+        if (refreshToken.startsWith(TOKEN_PREFIX)) {
+            return refreshToken.replace(TOKEN_PREFIX, "");
+        }
+        else
+            return refreshToken;
     }
 }
