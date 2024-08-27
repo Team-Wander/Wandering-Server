@@ -51,10 +51,11 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests((authorizeRequests) ->
                         authorizeRequests
-                                       
+
                                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
                                 .requestMatchers(HttpMethod.PATCH, "/auth").permitAll()
-                                       
+
+                                .requestMatchers(HttpMethod.GET, "/home").authenticated()
                                 .requestMatchers(HttpMethod.POST, "/home").authenticated()
                 )
 

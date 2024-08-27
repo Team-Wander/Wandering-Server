@@ -1,5 +1,6 @@
 package com.wandering.Do.domain.promise.entity;
 
+import com.wandering.Do.domain.promise.presentation.dto.res.GetPromiseListResDto;
 import com.wandering.Do.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -43,4 +44,6 @@ public class Promise {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+
 }
