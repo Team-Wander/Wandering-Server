@@ -55,7 +55,10 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
                                 .requestMatchers(HttpMethod.PATCH, "/auth").permitAll()
 
+
                                 .requestMatchers(HttpMethod.GET, "/home").authenticated()
+
+                                .requestMatchers(HttpMethod.DELETE, "/auth").authenticated()
                                 .requestMatchers(HttpMethod.POST, "/home").authenticated()
                 )
 
