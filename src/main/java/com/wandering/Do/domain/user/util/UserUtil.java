@@ -5,7 +5,9 @@ import com.wandering.Do.domain.user.exception.UserNotFoundException;
 import com.wandering.Do.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class UserUtil {
 
