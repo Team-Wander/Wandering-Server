@@ -42,7 +42,10 @@ public class Promise {
     private Stats stats;
 
     @Enumerated(EnumType.STRING)
-    private Grade grade;
+    private List<Grade> grade;
+
+    @Enumerated(EnumType.STRING)
+    private SelGender gender;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

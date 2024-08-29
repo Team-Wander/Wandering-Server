@@ -1,6 +1,7 @@
 package com.wandering.Do.domain.promise.presentation.dto.req;
 
 import com.wandering.Do.domain.promise.entity.Contact;
+import com.wandering.Do.domain.promise.entity.SelGender;
 import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.user.entity.Grade;
 import jakarta.validation.constraints.NotNull;
@@ -31,7 +32,9 @@ public class PromiseWriteReq {
 
     private Integer maximum;
 
-    private Grade grade;
+    private List<Grade> grade;
+
+    private SelGender gender;
 
     private List<Tag> tags;
 }
