@@ -1,8 +1,8 @@
 package com.wandering.Do.domain.promise.service;
 
-import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReqDto;
+import com.wandering.Do.domain.promise.presentation.dto.req.BoardWriteReq;
 
 public interface WriteBoardService {
 
-    void execute(PromiseWriteReqDto writeReqDto);
+    void execute(BoardWriteReq writeReqDto);
 }
