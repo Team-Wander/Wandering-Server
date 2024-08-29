@@ -27,7 +27,7 @@ public class PromiseGetListRes {
 
     private SelGender gender;
 
-    private Grade grade;
+    private List<Grade> grade;
 
     private List<Tag> tag;
 
