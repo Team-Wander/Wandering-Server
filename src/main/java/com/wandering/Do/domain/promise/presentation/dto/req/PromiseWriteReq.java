@@ -32,7 +32,7 @@ public class PromiseWriteReq {
 
     private Integer maximum;
 
-    private Grade grade;
+    private List<Grade> grade;
 
     private SelGender gender;
 

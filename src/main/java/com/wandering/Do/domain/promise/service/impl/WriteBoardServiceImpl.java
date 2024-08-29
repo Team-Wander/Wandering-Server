@@ -1,9 +1,7 @@
 package com.wandering.Do.domain.promise.service.impl;
-import com.wandering.Do.domain.promise.entity.Contact;
-import com.wandering.Do.domain.promise.entity.Promise;
-import com.wandering.Do.domain.promise.entity.SelGender;
-import com.wandering.Do.domain.promise.entity.Stats;
+import com.wandering.Do.domain.promise.entity.*;
 import com.wandering.Do.domain.promise.exception.InvalidDateException;
+import com.wandering.Do.domain.promise.exception.InvalidTagCountException;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.WriteBoardService;
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +35,11 @@ public class WriteBoardServiceImpl implements WriteBoardService {
             throw new InvalidDateException();
         }
 
+        List<Tag> tags = writeReqDto.getTags();
+        if (tags.size() > 2) {
+            throw new InvalidTagCountException();
+        }
+
         Contact contact = new Contact(
                 writeReqDto.getContact().getInstagram(),
                 writeReqDto.getContact().getDiscord(),
@@ -50,7 +54,7 @@ public class WriteBoardServiceImpl implements WriteBoardService {
                 .date(writeReqDto.getDate())
                 .spot(writeReqDto.getSpot())
                 .maximum(writeReqDto.getMaximum())
-                .tags(writeReqDto.getTags())
+                .tags(tags)
                 .user(user)
                 .gender(SelGender.ANY)
                 .stats(Stats.PENDING)
