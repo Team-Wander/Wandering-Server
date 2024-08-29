@@ -1,6 +1,7 @@
 package com.wandering.Do.domain.promise.service.impl;
 import com.wandering.Do.domain.promise.entity.Contact;
 import com.wandering.Do.domain.promise.entity.Promise;
+import com.wandering.Do.domain.promise.entity.SelGender;
 import com.wandering.Do.domain.promise.entity.Stats;
 import com.wandering.Do.domain.promise.exception.InvalidDateException;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
@@ -51,6 +52,7 @@ public class WriteBoardServiceImpl implements WriteBoardService {
                 .maximum(writeReqDto.getMaximum())
                 .tags(writeReqDto.getTags())
                 .user(user)
+                .gender(SelGender.ANY)
                 .stats(Stats.PENDING)
                 .grade(writeReqDto.getGrade())
                 .build();

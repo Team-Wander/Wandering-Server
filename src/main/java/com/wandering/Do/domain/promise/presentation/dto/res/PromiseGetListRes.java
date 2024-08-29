@@ -1,6 +1,7 @@
 package com.wandering.Do.domain.promise.presentation.dto.res;
 
 import com.wandering.Do.domain.promise.entity.Promise;
+import com.wandering.Do.domain.promise.entity.SelGender;
 import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.user.entity.Grade;
 import lombok.Builder;
@@ -24,6 +25,8 @@ public class PromiseGetListRes {
 
     private Integer maximum;
 
+    private SelGender gender;
+
     private Grade grade;
 
     private List<Tag> tag;
@@ -37,6 +40,7 @@ public class PromiseGetListRes {
                 .date(promise.getDate())
                 .author(promise.getUser().getName())
                 .maximum(promise.getMaximum())
+                .gender(promise.getGender())
                 .grade(promise.getGrade())
                 .tag(promise.getTags())  // Promise 엔티티의 Tag 리스트를 그대로 전달
                 .build();
