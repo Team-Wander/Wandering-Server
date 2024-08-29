@@ -29,7 +29,7 @@ public class SecurityConfig {
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
-        HttpSecurity httpSecurity = http
+        http
 
                 .csrf(AbstractHttpConfigurer::disable) // csrf 비활성화
                 .cors(AbstractHttpConfigurer::disable)
@@ -55,7 +55,8 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
                                 .requestMatchers(HttpMethod.PATCH, "/auth").permitAll()
                                 .requestMatchers(HttpMethod.DELETE, "/auth").authenticated()
-                                       
+
+                                .requestMatchers(HttpMethod.GET, "/home").authenticated()
                                 .requestMatchers(HttpMethod.POST, "/home").authenticated()
                 )
 

@@ -13,8 +13,6 @@ public class DoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DoApplication.class, args);
 
-		LocalDateTime now = LocalDateTime.now();
-		System.out.println("현재시간 " + now);
 	}
 	@PostConstruct
 	public void init() {

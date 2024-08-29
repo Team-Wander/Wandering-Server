@@ -1,5 +1,6 @@
 package com.wandering.Do.domain.promise.entity;
 
+import com.wandering.Do.domain.user.entity.Grade;
 import com.wandering.Do.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -40,7 +41,12 @@ public class Promise {
     @Enumerated(EnumType.STRING)
     private Stats stats;
 
+    @Enumerated(EnumType.STRING)
+    private Grade grade;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+
 }
