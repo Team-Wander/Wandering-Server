@@ -22,13 +22,11 @@ public class PromiseController {
 
     @PostMapping
     public ResponseEntity<Void> write(@RequestBody @Valid PromiseWriteReq writeReqDto) {
-
         writeBoardService.execute(writeReqDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @GetMapping
     public ResponseEntity<List<PromiseGetListRes>> getList(@RequestParam String spot) {
-
         List<PromiseGetListRes> response = getBoardListService.execute(spot);
         return ResponseEntity.ok(response);
     }
