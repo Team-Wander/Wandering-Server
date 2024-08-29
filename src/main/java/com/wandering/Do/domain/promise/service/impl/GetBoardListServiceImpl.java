@@ -1,7 +1,7 @@
 package com.wandering.Do.domain.promise.service.impl;
 
 import com.wandering.Do.domain.promise.entity.Promise;
-import com.wandering.Do.domain.promise.presentation.dto.res.BoardGetListRes;
+import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.GetBoardListService;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 public class GetBoardListServiceImpl implements GetBoardListService {
     private final PromiseRepository promiseRepository;
     @Override
-    public List<BoardGetListRes> execute(String spot) {
+    public List<PromiseGetListRes> execute(String spot) {
 
         List<Promise> promises = promiseRepository.findBySpot(spot);
 
         return promises.stream()
-                .map(promise -> BoardGetListRes.toDto(promise))
+                .map(promise -> PromiseGetListRes.toDto(promise))
                 .collect(Collectors.toList());
     }
 }

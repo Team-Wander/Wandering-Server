@@ -3,7 +3,7 @@ import com.wandering.Do.domain.promise.entity.Contact;
 import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.entity.Stats;
 import com.wandering.Do.domain.promise.exception.InvalidDateException;
-import com.wandering.Do.domain.promise.presentation.dto.req.BoardWriteReq;
+import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.WriteBoardService;
 import com.wandering.Do.domain.user.entity.User;
@@ -24,7 +24,7 @@ public class WriteBoardServiceImpl implements WriteBoardService {
 
 
     @Override
-    public void execute(BoardWriteReq writeReqDto) {
+    public void execute(PromiseWriteReq writeReqDto) {
 
         User user = userUtil.getCurrentUser();
 

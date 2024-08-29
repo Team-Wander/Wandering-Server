@@ -3,7 +3,6 @@ package com.wandering.Do.domain.promise.presentation.dto.res;
 import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.user.entity.Grade;
-import com.wandering.Do.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -12,7 +11,7 @@ import java.util.List;
 
 @Getter
 @Builder
-public class BoardGetListRes {
+public class PromiseGetListRes {
     private Long id;
 
     private String author;
@@ -29,15 +28,14 @@ public class BoardGetListRes {
 
     private List<Tag> tag;
 
-    public static BoardGetListRes toDto(Promise promise) {
-        String authorName = (promise.getUser() != null) ? promise.getUser().getName() : "Unknown";
+    public static PromiseGetListRes toDto(Promise promise) {
 
-        return BoardGetListRes.builder()
+        return PromiseGetListRes.builder()
                 .id(promise.getId())
                 .title(promise.getTitle())
                 .content(promise.getContent())
                 .date(promise.getDate())
-                .author(authorName)
+                .author(promise.getUser().getName())
                 .maximum(promise.getMaximum())
                 .grade(promise.getGrade())
                 .tag(promise.getTags())  // Promise 엔티티의 Tag 리스트를 그대로 전달

@@ -44,7 +44,7 @@ public class Promise {
     @Enumerated(EnumType.STRING)
     private Grade grade;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

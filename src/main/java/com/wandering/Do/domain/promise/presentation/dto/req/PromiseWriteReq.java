@@ -13,7 +13,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-public class BoardWriteReq {
+public class PromiseWriteReq {
 
     @NotNull
     @Size(max = 30)

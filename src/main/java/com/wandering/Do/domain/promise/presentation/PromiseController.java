@@ -1,7 +1,7 @@
 package com.wandering.Do.domain.promise.presentation;
 
-import com.wandering.Do.domain.promise.presentation.dto.req.BoardWriteReq;
-import com.wandering.Do.domain.promise.presentation.dto.res.BoardGetListRes;
+import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
+import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.service.GetBoardListService;
 import com.wandering.Do.domain.promise.service.WriteBoardService;
 import jakarta.validation.Valid;
@@ -21,15 +21,15 @@ public class PromiseController {
     private final GetBoardListService getBoardListService;
 
     @PostMapping
-    public ResponseEntity<Void> write(@RequestBody @Valid BoardWriteReq writeReqDto) {
+    public ResponseEntity<Void> write(@RequestBody @Valid PromiseWriteReq writeReqDto) {
 
         writeBoardService.execute(writeReqDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @GetMapping
-    public ResponseEntity<List<BoardGetListRes>> getList(@RequestParam String spot) {
+    public ResponseEntity<List<PromiseGetListRes>> getList(@RequestParam String spot) {
 
-        List<BoardGetListRes> response = getBoardListService.execute(spot);
+        List<PromiseGetListRes> response = getBoardListService.execute(spot);
         return ResponseEntity.ok(response);
     }
 }
