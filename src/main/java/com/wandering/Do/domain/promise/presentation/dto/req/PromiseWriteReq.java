@@ -26,8 +26,6 @@ public class PromiseWriteReq {
 
     private Contact contact;
 
-    private LocalDate date;
-
     private String spot;
 
     private Integer maximum;

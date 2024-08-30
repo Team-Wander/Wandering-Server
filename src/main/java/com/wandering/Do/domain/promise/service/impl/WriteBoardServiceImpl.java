@@ -29,11 +29,6 @@ public class WriteBoardServiceImpl implements WriteBoardService {
         User user = userUtil.getCurrentUser();
 
         LocalDate now = LocalDate.now();
-        LocalDate requestDate = writeReqDto.getDate();
-
-        if (requestDate.isBefore(now)) {
-            throw new InvalidDateException();
-        }
 
         List<Tag> tags = writeReqDto.getTags();
         if (tags.size() > 2) {
@@ -51,7 +46,7 @@ public class WriteBoardServiceImpl implements WriteBoardService {
                 .title(writeReqDto.getTitle())
                 .content(writeReqDto.getContent())
                 .contact(contact)
-                .date(writeReqDto.getDate())
+                .date(now)
                 .spot(writeReqDto.getSpot())
                 .maximum(writeReqDto.getMaximum())
                 .tags(tags)
