@@ -5,6 +5,7 @@ import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.user.entity.Grade;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -30,4 +31,6 @@ public class PromiseGetRes {
     private List<Grade> grade;
 
     private List<Tag> tag;
+
+    private String image; // 임시 타입 string
 }

@@ -18,6 +18,8 @@ public class User {
     @GeneratedValue(generator = "UUID4")
     private UUID id;
 
+    private String image;
+
     private String name;
 
     private String school;
