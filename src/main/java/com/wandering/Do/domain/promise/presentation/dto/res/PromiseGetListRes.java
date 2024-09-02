@@ -23,8 +23,8 @@ public class PromiseGetListRes {
     private Long id;
     private String title;
     private String content;
-    private List<Grade> proGrade;
-    private SelGender proGender;
+    private List<Grade> Grade;
+    private SelGender Gender;
     private LocalDate date;
     private Integer maximum;
     private List<Tag> tag;
@@ -41,8 +41,8 @@ public class PromiseGetListRes {
                 .id(promise.getId())
                 .title(promise.getTitle())
                 .content(promise.getContent())
-                .proGrade(promise.getGrade())
-                .proGender(promise.getGender())
+                .Grade(promise.getGrade())
+                .Gender(promise.getGender())
                 .date(promise.getDate())
                 .maximum(promise.getMaximum())
                 .tag(promise.getTags())

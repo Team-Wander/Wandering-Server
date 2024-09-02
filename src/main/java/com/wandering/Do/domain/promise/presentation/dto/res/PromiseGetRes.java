@@ -23,8 +23,8 @@ public class PromiseGetRes {
     private Long id;
     private String title;
     private String content;
-    private List<Grade> proGrade;
-    private SelGender proGender;
+    private List<Grade> Grade;
+    private SelGender Gender;
     private LocalDate date;
     private Integer maximum;
     private List<Tag> tag;
