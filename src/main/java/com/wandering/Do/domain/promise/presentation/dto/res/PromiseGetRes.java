@@ -13,24 +13,20 @@ import java.util.List;
 @Getter
 @Builder
 public class PromiseGetRes {
-
-    private Long id;
-
+    // user info
     private String author;
+    private String author_school;
+    private Grade author_grade;
+    private String author_gender;
+    private String author_profile;
 
+    // promise
+    private Long id;
     private String title;
-
     private String content;
-
+    private List<Grade> Grade;
+    private SelGender Gender;
     private LocalDate date;
-
     private Integer maximum;
-
-    private SelGender gender;
-
-    private List<Grade> grade;
-
     private List<Tag> tag;
-
-    private String image; // 임시 타입 string
 }

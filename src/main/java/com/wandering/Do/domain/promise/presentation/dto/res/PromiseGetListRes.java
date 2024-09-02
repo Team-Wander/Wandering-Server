@@ -13,36 +13,39 @@ import java.util.List;
 @Getter
 @Builder
 public class PromiseGetListRes {
-    private Long id;
-
+    // user info
     private String author;
+    private String author_school;
+    private Grade author_grade;
+    private String author_gender;
 
+    // promise
+    private Long id;
     private String title;
-
     private String content;
-
+    private List<Grade> Grade;
+    private SelGender Gender;
     private LocalDate date;
-
     private Integer maximum;
-
-    private SelGender gender;
-
-    private List<Grade> grade;
-
     private List<Tag> tag;
 
     public static PromiseGetListRes toDto(Promise promise) {
 
         return PromiseGetListRes.builder()
+                //user info
+                .author(promise.getUser().getName())
+                .author_school(promise.getUser().getSchool())
+                .author_grade(promise.getUser().getGrade())
+                .author_gender(promise.getUser().getGender())
+                // promise
                 .id(promise.getId())
                 .title(promise.getTitle())
                 .content(promise.getContent())
+                .Grade(promise.getGrade())
+                .Gender(promise.getGender())
                 .date(promise.getDate())
-                .author(promise.getUser().getName())
                 .maximum(promise.getMaximum())
-                .gender(promise.getGender())
-                .grade(promise.getGrade())
-                .tag(promise.getTags())  // Promise 엔티티의 Tag 리스트를 그대로 전달
+                .tag(promise.getTags())
                 .build();
     }
 }
