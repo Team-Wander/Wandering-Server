@@ -22,9 +22,10 @@ public class GetBoardServiceImpl implements GetBoardService {
         return PromiseGetRes.builder()
                 // user info
                 .author(promise.getUser().getName())
-                .userSchool(promise.getUser().getSchool())
-                .userGrade(promise.getUser().getGrade())
-                .userGender(promise.getUser().getGender())
+                .author_school(promise.getUser().getSchool())
+                .author_grade(promise.getUser().getGrade())
+                .author_gender(promise.getUser().getGender())
+                .author_profile(promise.getUser().getImage())
                 // promise
                 .id(promise.getId())
                 .title(promise.getTitle())
@@ -34,7 +35,6 @@ public class GetBoardServiceImpl implements GetBoardService {
                 .date(promise.getDate())
                 .maximum(promise.getMaximum())
                 .tag(promise.getTags())
-                .image(promise.getUser().getImage())
                 .build();
     }
 }

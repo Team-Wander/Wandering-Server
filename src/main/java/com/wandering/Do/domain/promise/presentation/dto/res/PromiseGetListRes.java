@@ -15,9 +15,9 @@ import java.util.List;
 public class PromiseGetListRes {
     // user info
     private String author;
-    private String userSchool;
-    private Grade userGrade;
-    private String userGender;
+    private String author_school;
+    private Grade author_grade;
+    private String author_gender;
 
     // promise
     private Long id;
@@ -34,9 +34,9 @@ public class PromiseGetListRes {
         return PromiseGetListRes.builder()
                 //user info
                 .author(promise.getUser().getName())
-                .userSchool(promise.getUser().getSchool())
-                .userGrade(promise.getUser().getGrade())
-                .userGender(promise.getUser().getGender())
+                .author_school(promise.getUser().getSchool())
+                .author_grade(promise.getUser().getGrade())
+                .author_gender(promise.getUser().getGender())
                 // promise
                 .id(promise.getId())
                 .title(promise.getTitle())

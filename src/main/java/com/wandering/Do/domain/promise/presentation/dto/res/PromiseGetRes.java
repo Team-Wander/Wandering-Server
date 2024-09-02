@@ -15,9 +15,10 @@ import java.util.List;
 public class PromiseGetRes {
     // user info
     private String author;
-    private String userSchool;
-    private Grade userGrade;
-    private String userGender;
+    private String author_school;
+    private Grade author_grade;
+    private String author_gender;
+    private String author_profile;
 
     // promise
     private Long id;
@@ -28,5 +29,4 @@ public class PromiseGetRes {
     private LocalDate date;
     private Integer maximum;
     private List<Tag> tag;
-    private String image;
 }
