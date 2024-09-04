@@ -28,6 +28,7 @@ public class PromiseGetListRes {
     private Integer maximum;
     private List<Tag> tag;
 
+
     public static PromiseGetListRes toDto(Promise promise) {
 
         return PromiseGetListRes.builder()
