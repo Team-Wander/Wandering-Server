@@ -22,10 +22,30 @@ public class PromiseGetListRes {
     // promise
     private Long id;
     private String title;
+    private String content;
     private List<Grade> Grade;
     private SelGender Gender;
     private LocalDate date;
     private Integer maximum;
     private List<Tag> tag;
 
+    public static PromiseGetListRes toDto(Promise promise) {
+
+        return PromiseGetListRes.builder()
+                //user info
+                .author(promise.getUser().getName())
+                .author_school(promise.getUser().getSchool())
+                .author_grade(promise.getUser().getGrade())
+                .author_gender(promise.getUser().getGender())
+                // promise
+                .id(promise.getId())
+                .title(promise.getTitle())
+                .content(promise.getContent())
+                .Grade(promise.getGrade())
+                .Gender(promise.getGender())
+                .date(promise.getDate())
+                .maximum(promise.getMaximum())
+                .tag(promise.getTags())
+                .build();
+    }
 }

@@ -1,5 +1,6 @@
 package com.wandering.Do.domain.promise.entity;
 
+import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.Grade;
 import com.wandering.Do.domain.user.entity.User;
 import jakarta.persistence.*;
@@ -42,7 +43,7 @@ public class Promise {
     private List<Grade> grade;
 
     @Enumerated(EnumType.STRING)
-    private SelGender gender;
+    private Gender gender;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
