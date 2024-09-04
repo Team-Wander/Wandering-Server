@@ -1,10 +1,10 @@
 package com.wandering.Do.domain.promise.service.impl;
 import com.wandering.Do.domain.promise.entity.*;
-import com.wandering.Do.domain.promise.exception.InvalidDateException;
 import com.wandering.Do.domain.promise.exception.InvalidTagCountException;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.WriteBoardService;
+import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.util.UserUtil;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +51,7 @@ public class WriteBoardServiceImpl implements WriteBoardService {
                 .maximum(writeReqDto.getMaximum())
                 .tags(tags)
                 .user(user)
-                .gender(SelGender.ANY)
+                .gender(Gender.ANY)
                 .stats(Stats.PENDING)
                 .grade(writeReqDto.getGrade())
                 .build();
