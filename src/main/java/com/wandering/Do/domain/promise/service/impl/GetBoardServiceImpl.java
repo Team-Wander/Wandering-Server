@@ -23,25 +23,6 @@ public class GetBoardServiceImpl implements GetBoardService {
         Promise promise = promiseRepository.findById(id)
                 .orElseThrow(PromiseNotFoundException::new);
 
-        return PromiseGetRes.builder()
-                // user info
-                .author(promise.getUser().getName())
-                .author_school(promise.getUser().getSchool())
-                .author_grade(promise.getUser().getGrade())
-                .author_gender(promise.getUser().getGender())
-                .author_profile(promise.getUser().getImage())
-                // promise
-                .id(promise.getId())
-                .title(promise.getTitle())
-                .content(promise.getContent())
-                .grade(promise.getGrade())
-                .gender(promise.getGender())
-                .date(promise.getDate())
-                .maximum(promise.getMaximum())
-                .tag(promise.getTags())
-                .build();
-
         return promiseConverter.toDto(promise);
-
     }
 }
