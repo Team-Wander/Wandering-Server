@@ -1,8 +1,8 @@
 package com.wandering.Do.domain.promise.presentation.dto.res;
 
 import com.wandering.Do.domain.promise.entity.Promise;
-import com.wandering.Do.domain.promise.entity.SelGender;
 import com.wandering.Do.domain.promise.entity.Tag;
+import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.Grade;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,12 +22,12 @@ public class PromiseGetListRes {
     // promise
     private Long id;
     private String title;
-    private String content;
-    private List<Grade> Grade;
-    private SelGender Gender;
+    private List<Grade> grade;
+    private Gender gender;
     private LocalDate date;
     private Integer maximum;
     private List<Tag> tag;
+
 
     public static PromiseGetListRes toDto(Promise promise) {
 
@@ -40,9 +40,8 @@ public class PromiseGetListRes {
                 // promise
                 .id(promise.getId())
                 .title(promise.getTitle())
-                .content(promise.getContent())
-                .Grade(promise.getGrade())
-                .Gender(promise.getGender())
+                .grade(promise.getGrade())
+                .gender(promise.getGender())
                 .date(promise.getDate())
                 .maximum(promise.getMaximum())
                 .tag(promise.getTags())
