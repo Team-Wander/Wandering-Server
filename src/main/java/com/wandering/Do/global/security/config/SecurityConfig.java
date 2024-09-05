@@ -55,6 +55,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
                                 .requestMatchers(HttpMethod.PATCH, "/auth").permitAll()
                                 .requestMatchers(HttpMethod.DELETE, "/auth").authenticated()
+                                .requestMatchers(HttpMethod.POST, "/auth/info").authenticated()
 
                                 .requestMatchers(HttpMethod.GET, "/home/{pro_id}").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/home/filter").authenticated()
