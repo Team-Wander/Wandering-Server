@@ -27,24 +27,4 @@ public class PromiseGetListRes {
     private LocalDate date;
     private Integer maximum;
     private List<Tag> tag;
-
-
-    public static PromiseGetListRes toDto(Promise promise) {
-
-        return PromiseGetListRes.builder()
-                //user info
-                .author(promise.getUser().getName())
-                .author_school(promise.getUser().getSchool())
-                .author_grade(promise.getUser().getGrade())
-                .author_gender(promise.getUser().getGender())
-                // promise
-                .id(promise.getId())
-                .title(promise.getTitle())
-                .grade(promise.getGrade())
-                .gender(promise.getGender())
-                .date(promise.getDate())
-                .maximum(promise.getMaximum())
-                .tag(promise.getTags())
-                .build();
-    }
 }
