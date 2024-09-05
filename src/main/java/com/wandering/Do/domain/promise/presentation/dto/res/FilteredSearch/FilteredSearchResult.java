@@ -12,5 +12,5 @@ import java.util.List;
 @AllArgsConstructor
 public class FilteredSearchResult {
     private long total;
-    private final List<PromiseSearchResultRes> result;
+    private List<PromiseSearchResultRes> result;
 }
