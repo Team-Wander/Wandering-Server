@@ -5,10 +5,10 @@ import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.presentation.dto.res.FilteredSearch.PromiseResponse;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetRes;
-import com.wandering.Do.domain.promise.service.GetBoardListService;
-import com.wandering.Do.domain.promise.service.GetBoardService;
+import com.wandering.Do.domain.promise.service.GetPromiseListService;
+import com.wandering.Do.domain.promise.service.GetPromiseService;
 import com.wandering.Do.domain.promise.service.GetFilterSearchService;
-import com.wandering.Do.domain.promise.service.WriteBoardService;
+import com.wandering.Do.domain.promise.service.WritePromiseService;
 import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.Grade;
 import jakarta.validation.Valid;
@@ -24,25 +24,25 @@ import java.util.List;
 @RequestMapping("/home")
 public class PromiseController {
 
-    private final WriteBoardService writeBoardService;
-    private final GetBoardListService getBoardListService;
-    private final GetBoardService getBoardService;
+    private final WritePromiseService writePromiseService;
+    private final GetPromiseListService getPromiseListService;
+    private final GetPromiseService getPromiseService;
 
     private final GetFilterSearchService getFilterSearchService;
 
     @PostMapping
     public ResponseEntity<Void> write(@RequestBody @Valid PromiseWriteReq writeReqDto) {
-        writeBoardService.execute(writeReqDto);
+        writePromiseService.execute(writeReqDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @GetMapping
     public ResponseEntity<List<PromiseGetListRes>> getList(@RequestParam String spot) {
-        List<PromiseGetListRes> getListRes = getBoardListService.execute(spot);
+        List<PromiseGetListRes> getListRes = getPromiseListService.execute(spot);
         return ResponseEntity.ok(getListRes);
     }
     @GetMapping("/{pro_id}")
     public ResponseEntity<PromiseGetRes> get(@PathVariable("pro_id") Long id) {
-        PromiseGetRes getRes = getBoardService.execute(id);
+        PromiseGetRes getRes = getPromiseService.execute(id);
         return ResponseEntity.ok(getRes);
     }
     @GetMapping("/filter")
