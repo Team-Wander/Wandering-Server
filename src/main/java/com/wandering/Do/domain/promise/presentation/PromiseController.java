@@ -1,11 +1,16 @@
 package com.wandering.Do.domain.promise.presentation;
 
+import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
+import com.wandering.Do.domain.promise.presentation.dto.res.FilteredSearch.PromiseResponse;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetRes;
 import com.wandering.Do.domain.promise.service.GetBoardListService;
 import com.wandering.Do.domain.promise.service.GetBoardService;
+import com.wandering.Do.domain.promise.service.GetFilterSearchService;
 import com.wandering.Do.domain.promise.service.WriteBoardService;
+import com.wandering.Do.domain.user.entity.Gender;
+import com.wandering.Do.domain.user.entity.Grade;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,6 +28,8 @@ public class PromiseController {
     private final GetBoardListService getBoardListService;
     private final GetBoardService getBoardService;
 
+    private final GetFilterSearchService getFilterSearchService;
+
     @PostMapping
     public ResponseEntity<Void> write(@RequestBody @Valid PromiseWriteReq writeReqDto) {
         writeBoardService.execute(writeReqDto);
@@ -37,5 +44,14 @@ public class PromiseController {
     public ResponseEntity<PromiseGetRes> get(@PathVariable("pro_id") Long id) {
         PromiseGetRes getRes = getBoardService.execute(id);
         return ResponseEntity.ok(getRes);
+    }
+    @GetMapping("/filter")
+    public ResponseEntity<PromiseResponse> searchPromises(
+            @RequestParam(required = false) List<Tag> tag,
+            @RequestParam(required = false) List<Gender> gender,
+            @RequestParam(required = false) List<Grade> grade) {
+        PromiseResponse response = getFilterSearchService.execute(tag, gender, grade);
+
+        return ResponseEntity.ok(response);
     }
 }

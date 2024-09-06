@@ -3,7 +3,7 @@ package com.wandering.Do.domain.promise.service.impl;
 import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
-import com.wandering.Do.domain.promise.service.GetBoardListService;
+import com.wandering.Do.domain.promise.service.GetPromiseListService;
 import com.wandering.Do.domain.promise.util.PromiseConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class GetBoardListServiceImpl implements GetBoardListService {
+public class GetPromiseListServiceImpl implements GetPromiseListService {
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
     @Override
