@@ -4,9 +4,10 @@ import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.promise.exception.PromiseNotFoundException;
 import com.wandering.Do.domain.promise.presentation.dto.res.FilteredSearch.PromiseResponse;
-import com.wandering.Do.domain.promise.presentation.dto.res.PromiseSearchResultRes;
+import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.GetFilterSearchService;
+import com.wandering.Do.domain.promise.util.PromiseConverter;
 import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.Grade;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class GetFilterSearchServiceImpl implements GetFilterSearchService {
     private final PromiseRepository promiseRepository;
+    private final PromiseConverter promiseConverter;
     @Override
     public PromiseResponse execute(List<Tag> tag, List<Gender> gender, List<Grade> grade) {
         List<Promise> promises = promiseRepository.findAll();
@@ -50,17 +52,9 @@ public class GetFilterSearchServiceImpl implements GetFilterSearchService {
             throw new PromiseNotFoundException();
         }
 
-        List<PromiseSearchResultRes> result = promises.stream()
-                .map(promise -> PromiseSearchResultRes.builder()
-                        .id(promise.getId())
-                        .author(promise.getUser().getName())
-                        .title(promise.getTitle())
-                        .content(promise.getContent())
-                        .date(promise.getDate())
-                        .maximum(promise.getMaximum())
-                        .tags(promise.getTags().stream().map(Tag::name).collect(Collectors.toList()))
-                        .build())
-                .collect(Collectors.toList());
+        List<PromiseGetListRes> result = promises.stream()
+                    .map(promiseConverter::toListDto)
+                    .collect(Collectors.toList());
 
         long total = result.size();
 
