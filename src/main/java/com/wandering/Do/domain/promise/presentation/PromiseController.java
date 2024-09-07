@@ -1,10 +1,12 @@
 package com.wandering.Do.domain.promise.presentation;
 
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
+import com.wandering.Do.domain.promise.presentation.dto.req.ReportPromiseReq;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetRes;
 import com.wandering.Do.domain.promise.service.GetBoardListService;
 import com.wandering.Do.domain.promise.service.GetBoardService;
+import com.wandering.Do.domain.promise.service.ReportPromiseService;
 import com.wandering.Do.domain.promise.service.WriteBoardService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,20 +24,31 @@ public class PromiseController {
     private final WriteBoardService writeBoardService;
     private final GetBoardListService getBoardListService;
     private final GetBoardService getBoardService;
+    private final ReportPromiseService reportPromiseService;
 
     @PostMapping
     public ResponseEntity<Void> write(@RequestBody @Valid PromiseWriteReq writeReqDto) {
         writeBoardService.execute(writeReqDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
     @GetMapping
     public ResponseEntity<List<PromiseGetListRes>> getList(@RequestParam String spot) {
         List<PromiseGetListRes> getListRes = getBoardListService.execute(spot);
         return ResponseEntity.ok(getListRes);
     }
+
     @GetMapping("/{pro_id}")
     public ResponseEntity<PromiseGetRes> get(@PathVariable("pro_id") Long id) {
         PromiseGetRes getRes = getBoardService.execute(id);
         return ResponseEntity.ok(getRes);
+    }
+
+    @PostMapping("/{pro_id}/declare")
+    public ResponseEntity<Void> declare(
+            @PathVariable("pro_id") Long id,
+            @RequestBody @Valid ReportPromiseReq reportPromiseReq) {
+        reportPromiseService.execute(reportPromiseReq, id);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
