@@ -25,28 +25,7 @@ public class GetFilterSearchServiceImpl implements GetFilterSearchService {
     private final PromiseConverter promiseConverter;
     @Override
     public PromiseResponse execute(List<Tag> tag, List<Gender> gender, List<Grade> grade) {
-        List<Promise> promises = promiseRepository.findAll();
-
-        // Tag로 필터링
-        if (tag != null && !tag.isEmpty()) {
-            promises = promises.stream()
-                    .filter(promise -> promise.getTags().stream().anyMatch(tag::contains))
-                    .collect(Collectors.toList());
-        }
-
-        // Grade로 필터링
-        if (grade != null && !grade.isEmpty()) {
-            promises = promises.stream()
-                    .filter(promise -> grade.contains(promise.getGrade()))
-                    .collect(Collectors.toList());
-        }
-
-        // Gender로 필터링
-        if (gender != null && !gender.isEmpty()) {
-            promises = promises.stream()
-                    .filter(promise -> gender.contains(promise.getGender()))
-                    .collect(Collectors.toList());
-        }
+        List<Promise> promises = promiseRepository.findByTagsInAndGenderInAndGradeIn(tag, gender, grade);
 
         if (promises.isEmpty()) {
             throw new PromiseNotFoundException();

@@ -47,9 +47,9 @@ public class PromiseController {
     }
     @GetMapping("/filter")
     public ResponseEntity<PromiseResponse> searchPromises(
-            @RequestParam(required = false) List<Tag> tag,
-            @RequestParam(required = false) List<Gender> gender,
-            @RequestParam(required = false) List<Grade> grade) {
+            @RequestParam List<Tag> tag,
+            @RequestParam List<Gender> gender,
+            @RequestParam List<Grade> grade) {
         PromiseResponse response = getFilterSearchService.execute(tag, gender, grade);
 
         return ResponseEntity.ok(response);
