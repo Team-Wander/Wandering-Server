@@ -1,5 +1,6 @@
-package com.wandering.Do.domain.declare;
+package com.wandering.Do.domain.declare.entity;
 
+import com.wandering.Do.domain.declare.Reason;
 import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.user.entity.User;
 import jakarta.persistence.*;
