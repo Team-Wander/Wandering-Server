@@ -19,7 +19,10 @@ public enum ErrorCode {
     //promise
     INVALID_TAG_COUNT(400, "최대 2개 까지 선택 가능합니다"),
     PROMISE_NOT_FOUND(404, "해당 글을 찾을 수 없습니다"),
-    INVALID_DATE(400, "날짜는 현재보다 이전일 수 없습니다.");
+    INVALID_DATE(400, "날짜는 현재보다 이전일 수 없습니다."),
+
+    // report
+    NOT_EMPTY_REASON(400, "신고사유는 공란일 수 없습니다.");
 
     private final int httpStatus;
     private final String message;
