@@ -27,10 +27,6 @@ public class GetFilterSearchServiceImpl implements GetFilterSearchService {
     public PromiseResponse execute(List<Tag> tag, List<Gender> gender, List<Grade> grade) {
         List<Promise> promises = promiseRepository.findByTagsInAndGenderInAndGradeIn(tag, gender, grade);
 
-        if (promises.isEmpty()) {
-            throw new PromiseNotFoundException();
-        }
-
         List<PromiseGetListRes> result = promises.stream()
                     .map(promiseConverter::toListDto)
                     .collect(Collectors.toList());
