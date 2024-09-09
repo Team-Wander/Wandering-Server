@@ -63,6 +63,8 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/home").authenticated()
                                 .requestMatchers(HttpMethod.POST, "/home/{pro_id}/declare").authenticated()
 
+                                .requestMatchers(HttpMethod.GET, "/my").authenticated()
+
                                 .requestMatchers(HttpMethod.GET, "/admin/dec_info").authenticated()
                 )
 
