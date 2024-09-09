@@ -2,7 +2,6 @@ package com.wandering.Do.domain.admin.presentation;
 
 import com.wandering.Do.domain.admin.presentation.dto.res.ReportListRes;
 import com.wandering.Do.domain.admin.service.GetReportListService;
-import com.wandering.Do.domain.declare.entity.Report;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
