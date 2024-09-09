@@ -6,6 +6,7 @@ import com.wandering.Do.domain.declare.exception.NotEmptyReasonException;
 import com.wandering.Do.domain.declare.repository.ReportRepository;
 import com.wandering.Do.domain.declare.util.ReportConverter;
 import com.wandering.Do.domain.promise.entity.Promise;
+import com.wandering.Do.domain.promise.exception.PromiseAlreadyReportException;
 import com.wandering.Do.domain.promise.exception.PromiseNotFoundException;
 import com.wandering.Do.domain.promise.presentation.dto.req.ReportPromiseReq;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
@@ -37,8 +38,11 @@ public class ReportPromiseServiceImpl implements ReportPromiseService {
             throw new NotEmptyReasonException();
         }
 
-        Report report = reportConverter.toEntity(reportPromiseReq, user, promise);
-
-        reportRepository.save(report);
+        reportRepository.findByPromiseAndUser(promise, user)
+                .ifPresentOrElse(
+                        rs -> { throw new PromiseAlreadyReportException(); },
+                        ()-> { Report report = reportConverter.toEntity(reportPromiseReq, user, promise);
+                               reportRepository.save(report); }
+                );
     }
 }
