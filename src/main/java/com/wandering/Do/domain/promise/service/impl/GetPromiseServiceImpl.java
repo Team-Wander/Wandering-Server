@@ -45,3 +45,8 @@ public class GetPromiseServiceImpl implements GetPromiseService {
 
     }
 }
+
+        return promiseConverter.toDto(promise);
+    }
+}
+

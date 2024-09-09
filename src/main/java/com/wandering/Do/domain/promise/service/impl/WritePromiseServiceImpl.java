@@ -7,6 +7,7 @@ import com.wandering.Do.domain.promise.exception.InvalidTagCountException;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.WriteBoardService;
+import com.wandering.Do.domain.promise.service.WritePromiseService;
 import com.wandering.Do.domain.promise.util.PromiseConverter;
 import com.wandering.Do.domain.user.entity.Grade;
 import com.wandering.Do.domain.user.entity.User;
@@ -21,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 public class WriteBoardServiceImpl implements WriteBoardService {
+public class WritePromiseServiceImpl implements WritePromiseService {
 
     private final PromiseRepository promiseRepository;
     private final UserUtil userUtil;
