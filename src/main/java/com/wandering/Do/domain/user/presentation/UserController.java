@@ -1,6 +1,7 @@
 package com.wandering.Do.domain.user.presentation;
 
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
+import com.wandering.Do.domain.user.presentation.dto.res.GetListRes;
 import com.wandering.Do.domain.user.service.getMyPromiseService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,8 @@ import java.util.List;
 public class UserController {
     private final getMyPromiseService getMyPromiseService;
     @GetMapping
-    public ResponseEntity<List<PromiseGetListRes>> getMy() {
-        List<PromiseGetListRes> res = getMyPromiseService.execute();
+    public ResponseEntity<List<GetListRes>> getMy() {
+        List<GetListRes> res = getMyPromiseService.execute();
         return ResponseEntity.ok(res);
     }
 }
