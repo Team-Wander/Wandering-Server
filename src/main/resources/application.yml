@@ -29,6 +29,10 @@ spring:
             authorization-uri: ${NAVER_AUTHORIZATION_URI}
             token-uri: ${NAVER_TOKEN_URI}
             user-info-uri: ${NAVER_USER_INFO_URI}
-
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      
 jwt:
   secret: ${JWT_SECRET}
