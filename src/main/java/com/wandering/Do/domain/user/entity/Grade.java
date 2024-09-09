@@ -6,5 +6,6 @@ public enum Grade {
     THREE,
     FOUR,
     FIVE,
-    SIX
+    SIX,
+    ANY
 }

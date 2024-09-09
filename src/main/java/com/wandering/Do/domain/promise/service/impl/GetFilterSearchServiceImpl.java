@@ -2,6 +2,8 @@ package com.wandering.Do.domain.promise.service.impl;
 
 import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.entity.Tag;
+import com.wandering.Do.domain.promise.exception.InvalidGradeSelectionException;
+import com.wandering.Do.domain.promise.exception.InvalidGradesSelectionException;
 import com.wandering.Do.domain.promise.exception.PromiseNotFoundException;
 import com.wandering.Do.domain.promise.presentation.dto.res.FilteredSearch.PromiseResponse;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
@@ -25,18 +27,28 @@ public class GetFilterSearchServiceImpl implements GetFilterSearchService {
     private final PromiseConverter promiseConverter;
     @Override
     public PromiseResponse execute(List<Tag> tag, List<Gender> gender, List<Grade> grade) {
+        validateGradeSelection(grade);
+
         List<Promise> promises = promiseRepository.findByTagsInAndGenderInAndGradeIn(tag, gender, grade);
 
         List<PromiseGetListRes> result = promises.stream()
                     .map(promiseConverter::toListDto)
                     .collect(Collectors.toList());
 
-        long total = result.size();
-
         return PromiseResponse.builder()
-                .total(total)
                 .promises(result)
                 .build();
+    }
+
+    private void validateGradeSelection(List<Grade> grades) {
+        if(grades.contains(Grade.ANY) && grades.size() > 1) {
+            throw new InvalidGradeSelectionException();
+        }
+
+        boolean hasSpecificGrades = grades.stream().anyMatch(grade -> grade != Grade.ANY);
+        if (hasSpecificGrades && grades.contains(Grade.ANY)) {
+            throw new InvalidGradesSelectionException();
+        }
     }
 }
 
