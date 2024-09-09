@@ -19,7 +19,6 @@ public class AdminConverterImpl implements AdminConverter {
                 .reason(report.getReason())
                 .title(promise.getTitle())
                 .Grade(promise.getGrade())
-                .Gender(promise.getGender())
                 .date(promise.getDate())
                 .maximum(promise.getMaximum())
                 .tag(promise.getTags())
