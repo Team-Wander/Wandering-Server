@@ -1,11 +1,10 @@
 package com.wandering.Do.domain.promise.presentation.dto.res;
 
-import com.wandering.Do.domain.promise.entity.SelGender;
 import com.wandering.Do.domain.promise.entity.Tag;
+import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.Grade;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,8 +23,8 @@ public class PromiseGetRes {
     private Long id;
     private String title;
     private String content;
-    private List<Grade> Grade;
-    private SelGender Gender;
+    private List<Grade> grade;
+    private Gender gender;
     private LocalDate date;
     private Integer maximum;
     private List<Tag> tag;

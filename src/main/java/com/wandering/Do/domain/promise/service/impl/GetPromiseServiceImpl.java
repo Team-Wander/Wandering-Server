@@ -4,7 +4,7 @@ import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.exception.PromiseNotFoundException;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetRes;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
-import com.wandering.Do.domain.promise.service.GetBoardService;
+import com.wandering.Do.domain.promise.service.GetPromiseService;
 import com.wandering.Do.domain.promise.util.PromiseConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class GetBoardServiceImpl implements GetBoardService {
+public class GetPromiseServiceImpl implements GetPromiseService {
 
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
