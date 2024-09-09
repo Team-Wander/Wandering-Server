@@ -9,6 +9,5 @@ import java.util.List;
 @Getter
 @Builder
 public class PromiseResponse {
-    private long total;
     private List<PromiseGetListRes> promises;
 }
