@@ -15,6 +15,8 @@ public enum ErrorCode {
 
     //user
     USER_NOT_FOUND(404, "해당 유저를 찾을 수 없습니다"),
+    PERMISSION_NOT_ACCESSIBLE(401, "접근할 수 없는 권한 입니다."),
+
 
     //promise
     INVALID_TAG_COUNT(400, "최대 2개 까지 선택 가능합니다"),
@@ -24,7 +26,8 @@ public enum ErrorCode {
     INVALID_DATE(400, "날짜는 현재보다 이전일 수 없습니다."),
 
     // report
-    NOT_EMPTY_REASON(400, "신고사유는 공란일 수 없습니다.");
+    NOT_EMPTY_REASON(400, "신고사유는 공란일 수 없습니다."),
+    PROMISE_ALREADY_REPORT(400, "이미 신고된 글입니다.");
 
     private final int httpStatus;
     private final String message;
