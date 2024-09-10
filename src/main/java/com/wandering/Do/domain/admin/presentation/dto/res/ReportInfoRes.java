@@ -28,4 +28,5 @@ public class ReportInfoRes {
     private Integer maximum;
     private List<Tag> tag;
     private Contact contact;
+    private String spot;
 }

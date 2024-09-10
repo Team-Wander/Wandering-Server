@@ -41,6 +41,7 @@ public class AdminConverterImpl implements AdminConverter {
                 .maximum(promise.getMaximum())
                 .tag(promise.getTags())
                 .contact(promise.getContact())
+                .spot(promise.getSpot())
                 .build();
     }
 }
