@@ -28,4 +28,5 @@ public class PromiseGetRes {
     private LocalDate date;
     private Integer maximum;
     private List<Tag> tag;
+    private String spot;
 }
