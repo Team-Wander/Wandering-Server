@@ -1,15 +1,16 @@
 package com.wandering.Do.domain.promise.presentation.dto.req;
 
 import com.wandering.Do.domain.declare.Reason;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReportPromiseReq {
-    @NonNull
+    @NotNull
     private Reason reason;
 
     @Size(max = 500)
