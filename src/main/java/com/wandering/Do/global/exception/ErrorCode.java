@@ -27,7 +27,8 @@ public enum ErrorCode {
 
     // report
     NOT_EMPTY_REASON(400, "신고사유는 공란일 수 없습니다."),
-    PROMISE_ALREADY_REPORT(400, "이미 신고된 글입니다.");
+    PROMISE_ALREADY_REPORT(400, "이미 신고된 글입니다."),
+    NOT_FOUND_REPORT(404, "해당 신고글을 찾을 수 없습니다.");
 
     private final int httpStatus;
     private final String message;
