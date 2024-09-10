@@ -74,6 +74,7 @@ public class PromiseConverterImpl implements PromiseConverter {
                 .gender(promise.getGender())
                 .date(promise.getDate())
                 .maximum(promise.getMaximum())
+                .spot(promise.getSpot())
                 .tag(promise.getTags())
                 .build();
     }

@@ -1,5 +1,7 @@
-package com.wandering.Do.domain.promise.presentation.dto.res;
+package com.wandering.Do.domain.admin.presentation.dto.res;
 
+import com.wandering.Do.domain.declare.Reason;
+import com.wandering.Do.domain.promise.entity.Contact;
 import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.Grade;
@@ -11,22 +13,20 @@ import java.util.List;
 
 @Getter
 @Builder
-public class PromiseGetRes {
-    // user info
+public class ReportInfoRes {
     private String author;
     private String author_school;
     private Grade author_grade;
     private String author_gender;
-    private String author_profile;
-
-    // promise
+    private Reason reason;
+    private String content;
     private Long id;
     private String title;
-    private String content;
     private List<Grade> grade;
     private Gender gender;
     private LocalDate date;
     private Integer maximum;
     private List<Tag> tag;
+    private Contact contact;
     private String spot;
 }
