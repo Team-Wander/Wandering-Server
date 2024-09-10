@@ -1,9 +1,9 @@
 package com.wandering.Do.domain.promise.service.impl;
 
-import com.wandering.Do.domain.promise.entity.Application;
+import com.wandering.Do.domain.apply.entity.Application;
 import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.exception.PromiseNotFoundException;
-import com.wandering.Do.domain.promise.repository.ApplicationRepository;
+import com.wandering.Do.domain.apply.repository.ApplicationRepository;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.ApplyReqService;
 import com.wandering.Do.domain.user.entity.User;

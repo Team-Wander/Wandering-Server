@@ -1,5 +1,6 @@
-package com.wandering.Do.domain.promise.entity;
+package com.wandering.Do.domain.apply.entity;
 
+import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
