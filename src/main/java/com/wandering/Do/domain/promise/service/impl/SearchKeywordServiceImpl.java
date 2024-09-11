@@ -20,7 +20,7 @@ public class SearchKeywordServiceImpl implements SearchKeywordService {
     private final PromiseConverter promiseConverter;
 
     @Override
-    public List<PromiseGetListRes> searchKeyword(String keyword) {
+    public List<PromiseGetListRes> execute(String keyword) {
         List<Promise> listPromise = promiseRepository.findByTitleContaining(keyword);
 
         return listPromise.stream()
