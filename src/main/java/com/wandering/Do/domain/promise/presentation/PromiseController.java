@@ -72,7 +72,7 @@ public class PromiseController {
     }
     @GetMapping("/search")
     public ResponseEntity<List<PromiseGetListRes>> search(@RequestParam String keyword) {
-        List<PromiseGetListRes> res = searchKeywordService.searchKeyword(keyword);
+        List<PromiseGetListRes> res = searchKeywordService.execute(keyword);
         return ResponseEntity.ok(res);
     }
 }
