@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class SearchKeywordServiceImpl implements SearchPromiseService {
+public class SearchPromiseServiceImpl implements SearchPromiseService {
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
 
