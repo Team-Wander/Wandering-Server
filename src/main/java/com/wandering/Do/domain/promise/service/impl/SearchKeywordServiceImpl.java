@@ -3,7 +3,7 @@ package com.wandering.Do.domain.promise.service.impl;
 import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
-import com.wandering.Do.domain.promise.service.SearchKeywordService;
+import com.wandering.Do.domain.promise.service.SearchPromiseService;
 import com.wandering.Do.domain.promise.util.PromiseConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class SearchKeywordServiceImpl implements SearchKeywordService {
+public class SearchKeywordServiceImpl implements SearchPromiseService {
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
 

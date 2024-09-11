@@ -1,6 +1,5 @@
 package com.wandering.Do.domain.promise.presentation;
 
-import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.presentation.dto.res.FilteredSearch.PromiseResponse;
@@ -29,7 +28,7 @@ public class PromiseController {
     private final GetPromiseService getPromiseService;
     private final ApplyReqService applyReqService;
 
-    private final SearchKeywordService searchKeywordService;
+    private final SearchPromiseService searchKeywordService;
 
     private final GetFilterSearchService getFilterSearchService;
     private final ReportPromiseService reportPromiseService;
