@@ -28,6 +28,8 @@ public class PromiseController {
     private final GetPromiseService getPromiseService;
     private final ApplyReqService applyReqService;
 
+    private final SearchPromiseService searchKeywordService;
+
     private final GetFilterSearchService getFilterSearchService;
     private final ReportPromiseService reportPromiseService;
   
@@ -66,5 +68,10 @@ public class PromiseController {
     public ResponseEntity<Void> applyPromise(@PathVariable("pro_id") Long id) {
         applyReqService.execute(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<PromiseGetListRes>> search(@RequestParam String keyword) {
+        List<PromiseGetListRes> res = searchKeywordService.execute(keyword);
+        return ResponseEntity.ok(res);
     }
 }
