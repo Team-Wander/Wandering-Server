@@ -1,5 +1,6 @@
 package com.wandering.Do.domain.promise.presentation;
 
+import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.presentation.dto.res.FilteredSearch.PromiseResponse;
@@ -27,6 +28,8 @@ public class PromiseController {
     private final GetPromiseListService getPromiseListService;
     private final GetPromiseService getPromiseService;
     private final ApplyReqService applyReqService;
+
+    private final SearchKeywordService searchKeywordService;
 
     private final GetFilterSearchService getFilterSearchService;
     private final ReportPromiseService reportPromiseService;
@@ -66,5 +69,10 @@ public class PromiseController {
     public ResponseEntity<Void> applyPromise(@PathVariable("pro_id") Long id) {
         applyReqService.execute(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<PromiseGetListRes>> search(@RequestParam String keyword) {
+        List<PromiseGetListRes> res = searchKeywordService.searchKeyword(keyword);
+        return ResponseEntity.ok(res);
     }
 }
