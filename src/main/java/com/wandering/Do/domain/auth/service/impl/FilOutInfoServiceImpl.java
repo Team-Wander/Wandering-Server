@@ -6,12 +6,10 @@ import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.exception.UserNotFoundException;
 import com.wandering.Do.domain.user.repository.UserRepository;
 import com.wandering.Do.domain.user.util.UserUtil;
-import jakarta.transaction.Transactional;
+import com.wandering.Do.global.annotation.ServiceWithTransactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
-@Transactional
+@ServiceWithTransactional
 @RequiredArgsConstructor
 public class FilOutInfoServiceImpl implements FilOutInfoService {
 

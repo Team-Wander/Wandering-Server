@@ -8,12 +8,10 @@ import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.ApplyReqService;
 import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.util.UserUtil;
+import com.wandering.Do.global.annotation.ServiceWithTransactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-@Service
-@Transactional
+@ServiceWithTransactional
 @RequiredArgsConstructor
 public class ApplyReqServiceImpl implements ApplyReqService {
     private final ApplicationRepository applicationRepository;
