@@ -7,17 +7,16 @@ import com.wandering.Do.domain.auth.service.SignInService;
 import com.wandering.Do.domain.user.entity.Authority;
 import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.repository.UserRepository;
+import com.wandering.Do.global.annotation.ServiceWithTransactional;
 import com.wandering.Do.global.oauth2.dto.NaverInfoRes;
 import com.wandering.Do.domain.auth.presentation.dto.request.SignInReq;
 import com.wandering.Do.global.oauth2.service.RequestOAuth2InfoService;
 import com.wandering.Do.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
-import org.antlr.v4.runtime.Token;
-import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-@Service
+@ServiceWithTransactional
 @RequiredArgsConstructor
 public class SignInServiceImpl implements SignInService {
 

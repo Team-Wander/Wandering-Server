@@ -12,12 +12,12 @@ import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.user.entity.Authority;
 import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.util.UserUtil;
+import com.wandering.Do.global.annotation.ServiceWithTransactionalReadOnly;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
-@Transactional
+@ServiceWithTransactionalReadOnly
 @RequiredArgsConstructor
 public class GetReportInfoServiceImpl implements GetReportInfoService {
 

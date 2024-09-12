@@ -6,15 +6,13 @@ import com.wandering.Do.domain.auth.repository.RefreshTokenRepository;
 import com.wandering.Do.domain.auth.service.LogoutService;
 import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.util.UserUtil;
+import com.wandering.Do.global.annotation.ServiceWithTransactional;
 import com.wandering.Do.global.redis.RedisUtil;
 import com.wandering.Do.global.security.jwt.JwtTokenProvider;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
-@Transactional
+@ServiceWithTransactional
 @RequiredArgsConstructor
 public class LogoutServiceImpl implements LogoutService {
 

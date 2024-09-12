@@ -13,12 +13,10 @@ import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.ReportPromiseService;
 import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.util.UserUtil;
-import jakarta.transaction.Transactional;
+import com.wandering.Do.global.annotation.ServiceWithTransactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
-@Transactional
+@ServiceWithTransactional
 @RequiredArgsConstructor
 public class ReportPromiseServiceImpl implements ReportPromiseService {
 

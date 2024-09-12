@@ -5,15 +5,13 @@ import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.SearchPromiseService;
 import com.wandering.Do.domain.promise.util.PromiseConverter;
+import com.wandering.Do.global.annotation.ServiceWithTransactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-@Transactional
+@ServiceWithTransactional
 @RequiredArgsConstructor
 public class SearchPromiseServiceImpl implements SearchPromiseService {
     private final PromiseRepository promiseRepository;

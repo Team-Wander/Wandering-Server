@@ -12,15 +12,13 @@ import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.user.entity.Authority;
 import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.util.UserUtil;
-import jakarta.transaction.Transactional;
+import com.wandering.Do.global.annotation.ServiceWithTransactionalReadOnly;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-@Transactional
+@ServiceWithTransactionalReadOnly
 @RequiredArgsConstructor
 public class GetReportListServiceImpl implements GetReportListService {
 

@@ -6,12 +6,10 @@ import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetRes;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.GetPromiseService;
 import com.wandering.Do.domain.promise.util.PromiseConverter;
+import com.wandering.Do.global.annotation.ServiceWithTransactionalReadOnly;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-@Service
-@Transactional
+@ServiceWithTransactionalReadOnly
 @RequiredArgsConstructor
 public class GetPromiseServiceImpl implements GetPromiseService {
 

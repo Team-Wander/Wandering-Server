@@ -11,15 +11,13 @@ import com.wandering.Do.domain.promise.util.PromiseConverter;
 import com.wandering.Do.domain.user.entity.Grade;
 import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.util.UserUtil;
+import com.wandering.Do.global.annotation.ServiceWithTransactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
 @RequiredArgsConstructor
-@Transactional
+@ServiceWithTransactional
 public class WritePromiseServiceImpl implements WritePromiseService {
 
     private final PromiseRepository promiseRepository;
