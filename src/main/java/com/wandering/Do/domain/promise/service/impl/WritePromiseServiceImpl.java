@@ -24,8 +24,6 @@ public class WritePromiseServiceImpl implements WritePromiseService {
     private final UserUtil userUtil;
     private final PromiseConverter promiseConverter;
 
-
-    @Override
     public void execute(PromiseWriteReq writeReqDto) {
 
         User user = userUtil.getCurrentUser();

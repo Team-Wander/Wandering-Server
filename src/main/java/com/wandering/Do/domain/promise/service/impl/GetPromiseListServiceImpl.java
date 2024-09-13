@@ -15,9 +15,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @ServiceWithTransactionalReadOnly
 public class GetPromiseListServiceImpl implements GetPromiseListService {
+
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
-    @Override
+
     public List<PromiseGetListRes> execute(String spot) {
 
         List<Promise> promises = promiseRepository.findBySpot(spot);

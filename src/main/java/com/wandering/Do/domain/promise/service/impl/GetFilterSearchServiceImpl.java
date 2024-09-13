@@ -20,9 +20,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @ServiceWithTransactionalReadOnly
 public class GetFilterSearchServiceImpl implements GetFilterSearchService {
+
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
-    @Override
+
     public PromiseResponse execute(List<Tag> tag, List<Gender> gender, List<Grade> grade) {
         validateGradeSelection(grade);
 

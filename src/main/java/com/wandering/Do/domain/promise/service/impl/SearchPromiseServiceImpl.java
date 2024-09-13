@@ -14,10 +14,10 @@ import java.util.stream.Collectors;
 @ServiceWithTransactional
 @RequiredArgsConstructor
 public class SearchPromiseServiceImpl implements SearchPromiseService {
+
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
 
-    @Override
     public List<PromiseGetListRes> execute(String keyword) {
         List<Promise> listPromise = promiseRepository.findByTitleContaining(keyword);
 
