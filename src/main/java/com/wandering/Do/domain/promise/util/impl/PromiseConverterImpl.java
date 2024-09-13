@@ -42,12 +42,10 @@ public class PromiseConverterImpl implements PromiseConverter {
 
     public PromiseGetListRes toListDto(Promise promise) {
         return PromiseGetListRes.builder()
-                //user info
                 .author(promise.getUser().getName())
                 .author_school(promise.getUser().getSchool())
                 .author_grade(promise.getUser().getGrade())
                 .author_gender(promise.getUser().getGender())
-                // promise
                 .id(promise.getId())
                 .title(promise.getTitle())
                 .grade(promise.getGrade())
@@ -60,13 +58,11 @@ public class PromiseConverterImpl implements PromiseConverter {
 
     public PromiseGetRes toDto(Promise promise) {
         return PromiseGetRes.builder()
-                // user info
                 .author(promise.getUser().getName())
                 .author_school(promise.getUser().getSchool())
                 .author_grade(promise.getUser().getGrade())
                 .author_gender(promise.getUser().getGender())
                 .author_profile(promise.getUser().getImage())
-                // promise
                 .id(promise.getId())
                 .title(promise.getTitle())
                 .content(promise.getContent())

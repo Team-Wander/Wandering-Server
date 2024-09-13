@@ -16,7 +16,6 @@ public class GetPromiseServiceImpl implements GetPromiseService {
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
 
-    @Override
     public PromiseGetRes execute(Long id) {
         Promise promise = promiseRepository.findById(id)
                 .orElseThrow(PromiseNotFoundException::new);

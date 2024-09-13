@@ -14,14 +14,17 @@ import lombok.RequiredArgsConstructor;
 @ServiceWithTransactional
 @RequiredArgsConstructor
 public class ApplyReqServiceImpl implements ApplyReqService {
+
     private final ApplicationRepository applicationRepository;
     private final PromiseRepository promiseRepository;
     private final UserUtil userUtil;
-    @Override
+
     public void execute(Long id) {
         User user = userUtil.getCurrentUser();
+
         Promise promise = promiseRepository.findById(id)
                 .orElseThrow(PromiseNotFoundException::new);
+
         Application application = new Application(promise, user);
 
         applicationRepository.save(application);
