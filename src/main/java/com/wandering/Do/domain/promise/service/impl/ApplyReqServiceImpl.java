@@ -21,8 +21,10 @@ public class ApplyReqServiceImpl implements ApplyReqService {
 
     public void execute(Long id) {
         User user = userUtil.getCurrentUser();
+
         Promise promise = promiseRepository.findById(id)
                 .orElseThrow(PromiseNotFoundException::new);
+
         Application application = new Application(promise, user);
 
         applicationRepository.save(application);
