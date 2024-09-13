@@ -2,7 +2,7 @@ package com.wandering.Do.domain.promise.presentation;
 
 import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
-import com.wandering.Do.domain.promise.presentation.dto.res.FilteredSearch.PromiseResponse;
+import com.wandering.Do.domain.promise.presentation.dto.res.PromiseFilterSearchRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetRes;
 import com.wandering.Do.domain.promise.service.*;
@@ -49,11 +49,11 @@ public class PromiseController {
     }
 
     @GetMapping("/filter")
-    public ResponseEntity<PromiseResponse> filterSearchPromises(
+    public ResponseEntity<PromiseFilterSearchRes> filterSearchPromises(
             @RequestParam List<Tag> tag,
             @RequestParam List<Gender> gender,
             @RequestParam List<Grade> grade) {
-        PromiseResponse response = getFilterSearchService.execute(tag, gender, grade);
+        PromiseFilterSearchRes response = getFilterSearchService.execute(tag, gender, grade);
 
         return ResponseEntity.ok(response);
     }

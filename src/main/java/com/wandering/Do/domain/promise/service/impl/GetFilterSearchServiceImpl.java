@@ -4,7 +4,7 @@ import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.entity.Tag;
 import com.wandering.Do.domain.promise.exception.InvalidGradeSelectionException;
 import com.wandering.Do.domain.promise.exception.InvalidGradesSelectionException;
-import com.wandering.Do.domain.promise.presentation.dto.res.FilteredSearch.PromiseResponse;
+import com.wandering.Do.domain.promise.presentation.dto.res.PromiseFilterSearchRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.GetFilterSearchService;
@@ -24,7 +24,7 @@ public class GetFilterSearchServiceImpl implements GetFilterSearchService {
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
 
-    public PromiseResponse execute(List<Tag> tag, List<Gender> gender, List<Grade> grade) {
+    public PromiseFilterSearchRes execute(List<Tag> tag, List<Gender> gender, List<Grade> grade) {
         validateGradeSelection(grade);
 
         List<Promise> promises = promiseRepository.findByTagsInAndGenderInAndGradeIn(tag, gender, grade);
@@ -33,7 +33,7 @@ public class GetFilterSearchServiceImpl implements GetFilterSearchService {
                     .map(promiseConverter::toListDto)
                     .collect(Collectors.toList());
 
-        return PromiseResponse.builder()
+        return PromiseFilterSearchRes.builder()
                 .promises(result)
                 .build();
     }
