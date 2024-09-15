@@ -2,7 +2,6 @@ package com.wandering.Do.domain.promise.util.impl;
 
 import com.wandering.Do.domain.promise.entity.Contact;
 import com.wandering.Do.domain.promise.entity.Promise;
-import com.wandering.Do.domain.promise.entity.Stats;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetRes;
@@ -26,7 +25,6 @@ public class PromiseConverterImpl implements PromiseConverter {
                 .user(user)
                 .gender(promiseWriteReq.getGender())
                 .tags(promiseWriteReq.getTags())
-                .stats(Stats.PENDING)
                 .grade(promiseWriteReq.getGrade())
                 .build();
     }

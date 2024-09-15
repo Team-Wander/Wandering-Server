@@ -37,9 +37,6 @@ public class Promise {
     private Contact contact;
 
     @Enumerated(EnumType.STRING)
-    private Stats stats;
-
-    @Enumerated(EnumType.STRING)
     private List<Grade> grade;
 
     @Enumerated(EnumType.STRING)
