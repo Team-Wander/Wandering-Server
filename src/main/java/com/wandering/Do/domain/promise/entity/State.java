@@ -1,6 +1,6 @@
 package com.wandering.Do.domain.promise.entity;
 
-public enum Stats {
+public enum State {
     PENDING,
     NOW,
     PAST
