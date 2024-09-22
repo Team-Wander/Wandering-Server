@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 public class NaverClient {
     private static final String GRANT_TYPE = "authorization_code";
 
-    @Value("${spring.security.oauth2.client.provider.naver.token_uri}")
+    @Value("${spring.security.oauth2.client.provider.naver.token-uri}")
     private String authUrl;
 
     @Value("${spring.security.oauth2.client.provider.naver.user-info-uri}")
