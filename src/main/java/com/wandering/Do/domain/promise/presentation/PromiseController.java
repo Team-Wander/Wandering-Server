@@ -29,7 +29,8 @@ public class PromiseController {
     private final SearchPromiseService searchKeywordService;
     private final GetFilterSearchService getFilterSearchService;
     private final ReportPromiseService reportPromiseService;
-  
+    private final DeleteMyPromiseService deleteMyPromiseService;
+
     @PostMapping
     public ResponseEntity<Void> write(@RequestBody @Valid PromiseWriteReq writeReqDto) {
         writePromiseService.execute(writeReqDto);
@@ -76,5 +77,11 @@ public class PromiseController {
     public ResponseEntity<List<PromiseGetListRes>> search(@RequestParam String keyword) {
         List<PromiseGetListRes> res = searchKeywordService.execute(keyword);
         return ResponseEntity.ok(res);
+    }
+
+    @DeleteMapping("/{pro_id}")
+    public ResponseEntity<Void> delete(@PathVariable Long pro_id) {
+        deleteMyPromiseService.execute(pro_id);
+        return ResponseEntity.noContent().build();
     }
 }
