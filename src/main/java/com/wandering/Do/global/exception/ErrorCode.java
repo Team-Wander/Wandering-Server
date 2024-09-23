@@ -16,8 +16,7 @@ public enum ErrorCode {
     //user
     USER_NOT_FOUND(404, "해당 유저를 찾을 수 없습니다"),
     PERMISSION_NOT_ACCESSIBLE(401, "접근할 수 없는 권한 입니다."),
-    NOT_MATCH_USER(400, "유저가 일치하지 않습니다."),
-
+    USER_NOT_MATCH(403, "이 글에 대한 접근 권한이 없습니다."),
 
     //promise
     INVALID_TAG_COUNT(400, "최대 2개 까지 선택 가능합니다"),
