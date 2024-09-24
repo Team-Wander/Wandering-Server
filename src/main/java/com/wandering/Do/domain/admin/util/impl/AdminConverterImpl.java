@@ -20,7 +20,6 @@ public class AdminConverterImpl implements AdminConverter {
                 .reason(report.getReason())
                 .title(promise.getTitle())
                 .grade(promise.getGrade())
-                .date(promise.getDate())
                 .maximum(promise.getMaximum())
                 .tag(promise.getTags())
                 .build();
@@ -37,7 +36,6 @@ public class AdminConverterImpl implements AdminConverter {
                 .content(report.getContent())
                 .title(promise.getTitle())
                 .grade(promise.getGrade())
-                .date(promise.getDate())
                 .maximum(promise.getMaximum())
                 .tag(promise.getTags())
                 .contact(promise.getContact())

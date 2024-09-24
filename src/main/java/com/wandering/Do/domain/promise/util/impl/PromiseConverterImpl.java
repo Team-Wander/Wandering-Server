@@ -19,7 +19,6 @@ public class PromiseConverterImpl implements PromiseConverter {
                 .title(promiseWriteReq.getTitle())
                 .content(promiseWriteReq.getContent())
                 .contact(saveContact(promiseWriteReq.getContact()))
-                .date(LocalDate.now())
                 .spot(promiseWriteReq.getSpot())
                 .maximum(promiseWriteReq.getMaximum())
                 .user(user)
@@ -48,7 +47,6 @@ public class PromiseConverterImpl implements PromiseConverter {
                 .title(promise.getTitle())
                 .grade(promise.getGrade())
                 .gender(promise.getGender())
-                .date(promise.getDate())
                 .maximum(promise.getMaximum())
                 .tag(promise.getTags())
                 .build();
@@ -66,7 +64,6 @@ public class PromiseConverterImpl implements PromiseConverter {
                 .content(promise.getContent())
                 .grade(promise.getGrade())
                 .gender(promise.getGender())
-                .date(promise.getDate())
                 .maximum(promise.getMaximum())
                 .spot(promise.getSpot())
                 .tag(promise.getTags())

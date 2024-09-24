@@ -21,7 +21,6 @@ public class UserConverterImpl implements UserConverter {
                 .title(promise.getTitle())
                 .grade(promise.getGrade())
                 .gender(promise.getGender())
-                .date(promise.getDate())
                 .maximum(promise.getMaximum())
                 .tag(promise.getTags())
                 .build();
