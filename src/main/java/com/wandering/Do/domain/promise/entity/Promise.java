@@ -24,8 +24,6 @@ public class Promise {
 
     private String content;
 
-    private LocalDate date;
-
     private String spot;
 
     private Integer maximum;
