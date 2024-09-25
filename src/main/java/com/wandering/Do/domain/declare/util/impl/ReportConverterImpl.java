@@ -14,8 +14,8 @@ public class ReportConverterImpl implements ReportConverter {
         return Report.builder()
                 .reason(reportPromiseReq.getReason())
                 .content(reportPromiseReq.getContent())
-                .user(user)
-                .promise(promise)
+                .userId(user.getId())
+                .promiseId(promise.getId())
                 .build();
     }
 }

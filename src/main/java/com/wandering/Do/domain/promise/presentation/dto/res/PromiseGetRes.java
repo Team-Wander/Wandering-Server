@@ -16,7 +16,7 @@ public class PromiseGetRes {
     private String author;
     private String author_school;
     private Grade author_grade;
-    private String author_gender;
+    private Gender author_gender;
     private String author_profile;
 
     // promise

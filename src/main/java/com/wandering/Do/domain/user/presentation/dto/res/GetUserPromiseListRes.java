@@ -11,12 +11,12 @@ import java.util.List;
 
 @Getter
 @Builder
-public class GetListRes {
+public class GetUserPromiseListRes {
     // user info
     private String author;
     private String author_school;
     private Grade author_grade;
-    private String author_gender;
+    private Gender author_gender;
 
     // promise
     private Long id;

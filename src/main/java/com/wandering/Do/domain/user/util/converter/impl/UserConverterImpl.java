@@ -1,7 +1,7 @@
 package com.wandering.Do.domain.user.util.converter.impl;
 
 import com.wandering.Do.domain.promise.entity.Promise;
-import com.wandering.Do.domain.user.presentation.dto.res.GetListRes;
+import com.wandering.Do.domain.user.presentation.dto.res.GetUserPromiseListRes;
 import com.wandering.Do.domain.user.util.converter.UserConverter;
 import org.springframework.stereotype.Component;
 
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 public class UserConverterImpl implements UserConverter {
 
     @Override
-    public GetListRes toListDto(Promise promise) {
-        return GetListRes.builder()
+    public GetUserPromiseListRes toListDto(Promise promise) {
+        return GetUserPromiseListRes.builder()
                 //user info
                 .author(promise.getUser().getName())
                 .author_school(promise.getUser().getSchool())

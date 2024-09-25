@@ -5,6 +5,7 @@ import com.wandering.Do.domain.auth.presentation.dto.response.TokenInfo;
 import com.wandering.Do.domain.auth.repository.RefreshTokenRepository;
 import com.wandering.Do.domain.auth.service.SignInService;
 import com.wandering.Do.domain.user.entity.Authority;
+import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.User;
 import com.wandering.Do.domain.user.repository.UserRepository;
 import com.wandering.Do.global.annotation.ServiceWithTransactional;
@@ -24,7 +25,6 @@ public class SignInServiceImpl implements SignInService {
     private final UserRepository userRepository;
     private final RequestOAuth2InfoService requestOAuth2InfoService;
     private final RefreshTokenRepository refreshTokenRepository;
-
 
     public TokenInfo execute(SignInReq params) {
         NaverInfoRes info = requestOAuth2InfoService.request(params);
@@ -47,7 +47,7 @@ public class SignInServiceImpl implements SignInService {
                 .email(naverInfoRes.getEmail())
                 .name(naverInfoRes.getNickname())
                 .birthYear(naverInfoRes.getBirthyear())
-                .gender(naverInfoRes.getGender())
+                .gender(saveGender(naverInfoRes.getGender()))
                 .mobile(naverInfoRes.getMobile())
                 .authority(Authority.USER)
                 .build();
@@ -55,6 +55,14 @@ public class SignInServiceImpl implements SignInService {
         userRepository.save(user);
 
         return user.getId();
+    }
+
+    private Gender saveGender(String gender) {
+        if (gender.equals("F"))
+            return Gender.FEMALE;
+        else if (gender.equals("M"))
+            return Gender.MALE;
+        else return null;
     }
 
     private void saveRefreshToken(String token, UUID userId) {
