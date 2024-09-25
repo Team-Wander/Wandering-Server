@@ -27,7 +27,8 @@ public class User {
 
     private String email;
 
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     private String mobile;
 
