@@ -1,9 +1,7 @@
 package com.wandering.Do.domain.user.presentation;
 
-import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
-import com.wandering.Do.domain.user.presentation.dto.res.GetListRes;
-import com.wandering.Do.domain.user.service.getMyPromiseService;
-import lombok.Getter;
+import com.wandering.Do.domain.user.presentation.dto.res.GetUserPromiseListRes;
+import com.wandering.Do.domain.user.service.GetMyPromiseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +14,10 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/my")
 public class UserController {
-    private final getMyPromiseService getMyPromiseService;
+    private final GetMyPromiseService getMyPromiseService;
     @GetMapping
-    public ResponseEntity<List<GetListRes>> getMy() {
-        List<GetListRes> res = getMyPromiseService.execute();
+    public ResponseEntity<List<GetUserPromiseListRes>> getMy() {
+        List<GetUserPromiseListRes> res = getMyPromiseService.execute();
         return ResponseEntity.ok(res);
     }
 }
