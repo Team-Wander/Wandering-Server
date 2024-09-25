@@ -36,7 +36,7 @@ public class ReportPromiseServiceImpl implements ReportPromiseService {
             throw new NotEmptyReasonException();
         }
 
-        reportRepository.findByPromiseAndUser(promise, user)
+        reportRepository.findByPromiseIdAndUserId(id, user.getId())
                 .ifPresentOrElse(
                         rs -> { throw new PromiseAlreadyReportException(); },
                         ()-> { Report report = reportConverter.toEntity(reportPromiseReq, user, promise);

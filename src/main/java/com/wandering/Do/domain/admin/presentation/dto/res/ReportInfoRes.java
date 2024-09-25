@@ -17,7 +17,7 @@ public class ReportInfoRes {
     private String author;
     private String author_school;
     private Grade author_grade;
-    private String author_gender;
+    private Gender author_gender;
     private Reason reason;
     private String content;
     private Long id;

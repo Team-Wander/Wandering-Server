@@ -38,7 +38,7 @@ public class GetReportListServiceImpl implements GetReportListService {
         List<ReportListRes> resList = new ArrayList<>();
 
         for (Report report : reports) {
-            Promise promise = promiseRepository.findById(report.getPromise().getId())
+            Promise promise = promiseRepository.findById(report.getPromiseId())
                     .orElseThrow(PromiseNotFoundException::new);
             ReportListRes res = adminConverter.toListDto(promise, report);
 

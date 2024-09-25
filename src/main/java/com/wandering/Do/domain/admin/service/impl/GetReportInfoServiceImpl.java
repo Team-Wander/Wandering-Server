@@ -36,7 +36,7 @@ public class GetReportInfoServiceImpl implements GetReportInfoService {
         Report report = reportRepository.findById(id)
                 .orElseThrow(NotFoundReportException::new);
 
-        Promise promise = promiseRepository.findById(report.getPromise().getId())
+        Promise promise = promiseRepository.findById(report.getPromiseId())
                 .orElseThrow(NotFoundReportException::new);
 
         return adminConverter.toDto(promise, report);

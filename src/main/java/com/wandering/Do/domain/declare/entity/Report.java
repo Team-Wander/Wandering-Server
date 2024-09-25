@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Entity
 @Builder
 @Getter
@@ -25,11 +27,9 @@ public class Report {
     @Enumerated(EnumType.STRING)
     private Reason reason;
 
-    @ManyToOne
     @JoinColumn(name = "promise_id")
-    private Promise promise;
+    private Long promiseId;
 
-    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UUID userId;
 }
