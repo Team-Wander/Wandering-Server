@@ -24,18 +24,20 @@ public class Promise {
 
     private String content;
 
-    private LocalDate date;
-
     private String spot;
 
     private Integer maximum;
 
-    @Enumerated(EnumType.STRING)
-    private List<Tag> tags;
-
     @Embedded
     private Contact contact;
 
+    @ElementCollection
+    @CollectionTable(name = "tags", joinColumns = @JoinColumn(name = "promise_id"))
+    @Enumerated(EnumType.STRING)
+    private List<Tag> tags;
+
+    @ElementCollection
+    @CollectionTable(name = "grade", joinColumns = @JoinColumn(name = "promise_id"))
     @Enumerated(EnumType.STRING)
     private List<Grade> grade;
 
