@@ -2,6 +2,7 @@ package com.wandering.Do.domain.promise.service.impl;
 
 import com.wandering.Do.domain.apply.entity.Application;
 import com.wandering.Do.domain.promise.entity.Promise;
+import com.wandering.Do.domain.promise.exception.IllegalArgumentException;
 import com.wandering.Do.domain.promise.exception.PromiseNotFoundException;
 import com.wandering.Do.domain.apply.repository.ApplicationRepository;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
@@ -24,6 +25,9 @@ public class ApplyReqServiceImpl implements ApplyReqService {
 
         Promise promise = promiseRepository.findById(id)
                 .orElseThrow(PromiseNotFoundException::new);
+
+        if(promise.getUser().getId().equals(user.getId()))
+            throw new IllegalArgumentException();
 
         Application application = new Application(promise, user);
 
