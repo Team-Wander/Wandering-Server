@@ -25,6 +25,7 @@ public enum ErrorCode {
     INVALID_GRADES_SELECTION(400, "ONE부터 SIX까지의 학년이 선택된 경우 'ANY'를 선택할 수 없습니다."),
     INVALID_DATE(400, "날짜는 현재보다 이전일 수 없습니다."),
     ILLEGAL_ARGUMENT(400, "자신의 약속에 신청할 수 없습니다"),
+    ALREADY_APPLIED(400, "이미 신청한 약속 입니다"),
 
     // report
     NOT_EMPTY_REASON(400, "신고사유는 공란일 수 없습니다."),
