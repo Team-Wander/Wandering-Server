@@ -1,8 +1,10 @@
 package com.wandering.Do.domain.user.presentation;
 
 import com.wandering.Do.domain.user.presentation.dto.res.GetUserPromiseListRes;
+import com.wandering.Do.domain.user.service.GetMyApplyService;
 import com.wandering.Do.domain.user.service.GetMyPromiseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +17,15 @@ import java.util.List;
 @RequestMapping("/my")
 public class UserController {
     private final GetMyPromiseService getMyPromiseService;
+    private final GetMyApplyService getMyApplyService;
     @GetMapping
     public ResponseEntity<List<GetUserPromiseListRes>> getMy() {
         List<GetUserPromiseListRes> res = getMyPromiseService.execute();
+        return ResponseEntity.ok(res);
+    }
+    @GetMapping("/reservation")
+    public ResponseEntity<List<GetUserPromiseListRes>> getMyApply() {
+        List<GetUserPromiseListRes> res = getMyApplyService.execute();
         return ResponseEntity.ok(res);
     }
 }
