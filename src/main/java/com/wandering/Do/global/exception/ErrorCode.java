@@ -19,11 +19,13 @@ public enum ErrorCode {
     USER_NOT_MATCH(403, "이 글에 대한 접근 권한이 없습니다."),
 
     //promise
+    PROMISE_NOT_FOUND(404, "해당 글을 찾을 수 없습니다"),
     INVALID_TAG_COUNT(400, "최대 2개 까지 선택 가능합니다"),
     INVALID_GRADE_SELECTION(400, "ANY가 선택된 경우 다른 학년을 선택할 수 없습니다."),
     INVALID_GRADES_SELECTION(400, "ONE부터 SIX까지의 학년이 선택된 경우 'ANY'를 선택할 수 없습니다."),
-    PROMISE_NOT_FOUND(404, "해당 글을 찾을 수 없습니다"),
     INVALID_DATE(400, "날짜는 현재보다 이전일 수 없습니다."),
+    ILLEGAL_ARGUMENT(400, "자신의 약속에 신청할 수 없습니다"),
+    ALREADY_APPLIED(400, "이미 신청한 약속 입니다"),
 
     // report
     NOT_EMPTY_REASON(400, "신고사유는 공란일 수 없습니다."),
