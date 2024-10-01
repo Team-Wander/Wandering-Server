@@ -32,7 +32,7 @@ public class UserController {
         return ResponseEntity.ok(res);
     }
     @GetMapping("/{pro_id}/info")
-    public ResponseEntity<List<GetWhoApplyPromiseRes>> getWhoApply(@PathVariable(name = "pro_id") Long id) {
+    public ResponseEntity<List<GetWhoApplyPromiseRes>> getWhoApply(@PathVariable("pro_id") Long id) {
         List<GetWhoApplyPromiseRes> res = getWhoApplyService.execute(id);
         return ResponseEntity.ok(res);
     }
