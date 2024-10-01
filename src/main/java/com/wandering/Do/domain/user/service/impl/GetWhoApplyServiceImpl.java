@@ -21,7 +21,7 @@ public class GetWhoApplyServiceImpl implements GetWhoApplyService {
 
     @Override
     public List<GetWhoApplyPromiseRes> execute(Long promiseId) {
-        List<Application> applicationList = applicationRepository.findByPromise_id(promiseId);
+        List<Application> applicationList = applicationRepository.findByPromiseId(promiseId);
 
         if(applicationList.isEmpty())
             throw new PromiseNotFoundException();
