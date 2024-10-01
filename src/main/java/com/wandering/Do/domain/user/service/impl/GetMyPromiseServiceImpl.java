@@ -19,7 +19,7 @@ public class GetMyPromiseServiceImpl implements GetMyPromiseService {
     private final PromiseRepository promiseRepository;
     private final UserUtil userUtil;
     private final UserConverter userConverter;
-    @Override
+
     public List<GetUserPromiseListRes> execute() {
         User user = userUtil.getCurrentUser();
         List<Promise> promises = promiseRepository.findByUser(user);
