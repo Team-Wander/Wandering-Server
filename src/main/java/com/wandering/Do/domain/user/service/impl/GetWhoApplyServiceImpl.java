@@ -19,7 +19,6 @@ public class GetWhoApplyServiceImpl implements GetWhoApplyService {
     private final ApplicationRepository applicationRepository;
     private final UserConverter userConverter;
 
-    @Override
     public List<GetWhoApplyPromiseRes> execute(Long promiseId) {
         List<Application> applicationList = applicationRepository.findByPromiseId(promiseId);
 

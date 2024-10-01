@@ -21,7 +21,7 @@ public class GetMyApplyServiceImpl implements GetMyApplyService {
     private final ApplicationRepository applicationRepository;
     private final UserUtil userUtil;
     private final UserConverter userConverter;
-    @Override
+
     public List<GetUserPromiseListRes> execute() {
         User user = userUtil.getCurrentUser();
         List<Application> applications = applicationRepository.findByUser(user);
