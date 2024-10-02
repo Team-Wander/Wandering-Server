@@ -72,6 +72,7 @@ public class SecurityConfig {
 
                                 .requestMatchers(HttpMethod.GET, "/admin/dec_info").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/admin/{dec_id}").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/admin/{dec_id}").authenticated()
                 )
 
                 .addFilterBefore(new JwtFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
