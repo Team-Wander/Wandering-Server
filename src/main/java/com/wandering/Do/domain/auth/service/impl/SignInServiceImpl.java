@@ -4,6 +4,7 @@ import com.wandering.Do.domain.auth.RefreshToken;
 import com.wandering.Do.domain.auth.presentation.dto.response.TokenInfo;
 import com.wandering.Do.domain.auth.repository.RefreshTokenRepository;
 import com.wandering.Do.domain.auth.service.SignInService;
+import com.wandering.Do.domain.declare.Case;
 import com.wandering.Do.domain.user.entity.Authority;
 import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.User;
@@ -50,6 +51,7 @@ public class SignInServiceImpl implements SignInService {
                 .gender(saveGender(naverInfoRes.getGender()))
                 .mobile(naverInfoRes.getMobile())
                 .authority(Authority.USER)
+                .aCase(Case.NORMAL)
                 .build();
 
         userRepository.save(user);
