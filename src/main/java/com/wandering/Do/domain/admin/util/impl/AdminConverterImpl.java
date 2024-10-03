@@ -1,5 +1,6 @@
 package com.wandering.Do.domain.admin.util.impl;
 
+import com.wandering.Do.domain.admin.presentation.dto.res.SearchUserInfoRes;
 import com.wandering.Do.domain.admin.presentation.dto.res.ReportInfoRes;
 import com.wandering.Do.domain.admin.presentation.dto.res.ReportListRes;
 import com.wandering.Do.domain.admin.presentation.dto.res.UserListRes;
@@ -47,6 +48,18 @@ public class AdminConverterImpl implements AdminConverter {
 
     public UserListRes toUserDto(User user) {
         return UserListRes.builder()
+                .userId(user.getId())
+                .name(user.getName())
+                .school(user.getSchool())
+                .gender(user.getGender())
+                .profile(user.getImage())
+                .aCase(user.getACase())
+                .build();
+    }
+
+
+    public SearchUserInfoRes toSearchUserInfoDto(User user) {
+        return SearchUserInfoRes.builder()
                 .userId(user.getId())
                 .name(user.getName())
                 .school(user.getSchool())
