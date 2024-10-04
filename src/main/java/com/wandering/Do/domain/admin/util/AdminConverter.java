@@ -1,5 +1,6 @@
 package com.wandering.Do.domain.admin.util;
 
+import com.wandering.Do.domain.admin.presentation.dto.res.SearchUserInfoRes;
 import com.wandering.Do.domain.admin.presentation.dto.res.ReportInfoRes;
 import com.wandering.Do.domain.admin.presentation.dto.res.ReportListRes;
 import com.wandering.Do.domain.admin.presentation.dto.res.UserListRes;
@@ -13,4 +14,6 @@ public interface AdminConverter {
     ReportInfoRes toDto (Promise promise, Report report);
 
     UserListRes toUserDto(User user);
+
+    SearchUserInfoRes toSearchUserInfoDto(User user);
 }
