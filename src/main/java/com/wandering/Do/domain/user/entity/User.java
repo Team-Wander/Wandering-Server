@@ -51,4 +51,8 @@ public class User {
         this.grade = userInfoReq.getGrade();
         this.spot = userInfoReq.getSpot();
     }
+
+    public void changeCase (Case aCase) {
+        this.aCase = aCase;
+    }
 }
