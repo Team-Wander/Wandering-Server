@@ -1,5 +1,6 @@
 package com.wandering.Do.domain.admin.presentation;
 
+import com.wandering.Do.domain.admin.presentation.dto.req.ChangeUserCase;
 import com.wandering.Do.domain.admin.presentation.dto.res.SearchUserInfoRes;
 import com.wandering.Do.domain.admin.presentation.dto.res.ReportInfoRes;
 import com.wandering.Do.domain.admin.presentation.dto.res.ReportListRes;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/admin")
@@ -20,6 +22,7 @@ public class AdminController {
     private final DeleteReportService deleteReportService;
     private final GetUserListService getUserListService;
     private final SearchUserInfoService findUserInfoService;
+    private final ChangeUserCaseService changeUserCaseService;
 
     @GetMapping("/dec_info")
     public ResponseEntity<List<ReportListRes>> getReportList() {
@@ -49,5 +52,14 @@ public class AdminController {
     public ResponseEntity<List<SearchUserInfoRes>> searchUser(@RequestParam String name) {
         List<SearchUserInfoRes> res = findUserInfoService.execute(name);
         return ResponseEntity.ok(res);
+    }
+
+    @PatchMapping("/{user_id}")
+    public ResponseEntity<Void> changeUserCase(
+            @PathVariable("user_id") UUID id,
+            @RequestBody ChangeUserCase changeUserCase
+    ) {
+        changeUserCaseService.execute(id,changeUserCase);
+        return ResponseEntity.noContent().build();
     }
 }
