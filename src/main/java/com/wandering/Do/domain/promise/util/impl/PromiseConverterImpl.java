@@ -42,6 +42,10 @@ public class PromiseConverterImpl implements PromiseConverter {
                 .author(promise.getUser().getName())
                 .id(promise.getId())
                 .title(promise.getTitle())
+                .grade(promise.getGrade())
+                .gender(promise.getGender())
+                .maximum(promise.getMaximum())
+                .tag(promise.getTags())
                 .build();
     }
 
