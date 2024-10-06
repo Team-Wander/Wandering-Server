@@ -40,15 +40,8 @@ public class PromiseConverterImpl implements PromiseConverter {
     public PromiseGetListRes toListDto(Promise promise) {
         return PromiseGetListRes.builder()
                 .author(promise.getUser().getName())
-                .author_school(promise.getUser().getSchool())
-                .author_grade(promise.getUser().getGrade())
-                .author_gender(promise.getUser().getGender())
                 .id(promise.getId())
                 .title(promise.getTitle())
-                .grade(promise.getGrade())
-                .gender(promise.getGender())
-                .maximum(promise.getMaximum())
-                .tag(promise.getTags())
                 .build();
     }
 
