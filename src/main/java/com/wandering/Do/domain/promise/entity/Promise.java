@@ -1,12 +1,12 @@
 package com.wandering.Do.domain.promise.entity;
 
+import com.wandering.Do.domain.promise.presentation.dto.req.PromiseUpdateReq;
 import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.Grade;
 import com.wandering.Do.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -47,4 +47,15 @@ public class Promise {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public void updatePromise(PromiseUpdateReq updateReqDto) {
+        this.title = updateReqDto.getTitle();
+        this.content = updateReqDto.getContent();
+        this.spot = updateReqDto.getSpot();
+        this.maximum = updateReqDto.getMaximum();
+        this.contact = updateReqDto.getContact();
+        this.tags = updateReqDto.getTags();
+        this.grade = updateReqDto.getGrade();
+        this.gender = updateReqDto.getGender();
+    }
 }

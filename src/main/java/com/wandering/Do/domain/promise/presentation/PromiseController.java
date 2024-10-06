@@ -1,6 +1,7 @@
 package com.wandering.Do.domain.promise.presentation;
 
 import com.wandering.Do.domain.promise.entity.Tag;
+import com.wandering.Do.domain.promise.presentation.dto.req.PromiseUpdateReq;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseFilterSearchRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
@@ -30,6 +31,7 @@ public class PromiseController {
     private final GetFilterSearchService getFilterSearchService;
     private final ReportPromiseService reportPromiseService;
     private final DeletePromiseService deletePromiseService;
+    private final UpdatePromiseService updatePromiseService;
   
     @PostMapping
     public ResponseEntity<Void> write(@RequestBody @Valid PromiseWriteReq writeReqDto) {
@@ -82,6 +84,12 @@ public class PromiseController {
     @DeleteMapping("/{pro_id}")
     public ResponseEntity<Void> deletePromise(@PathVariable("pro_id") Long id) {
         deletePromiseService.execute(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{pro_id}")
+    public ResponseEntity<Void> updatePromise(@PathVariable("pro_id") Long id, @RequestBody @Valid PromiseUpdateReq updateReqDto) {
+        updatePromiseService.execute(id, updateReqDto);
         return ResponseEntity.noContent().build();
     }
 }
