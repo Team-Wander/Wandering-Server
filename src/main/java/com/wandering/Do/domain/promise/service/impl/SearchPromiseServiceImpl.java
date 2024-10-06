@@ -1,7 +1,7 @@
 package com.wandering.Do.domain.promise.service.impl;
 
 import com.wandering.Do.domain.promise.entity.Promise;
-import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
+import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetSearchRes;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.promise.service.SearchPromiseService;
 import com.wandering.Do.domain.promise.util.PromiseConverter;
@@ -18,11 +18,11 @@ public class SearchPromiseServiceImpl implements SearchPromiseService {
     private final PromiseRepository promiseRepository;
     private final PromiseConverter promiseConverter;
 
-    public List<PromiseGetListRes> execute(String keyword) {
+    public List<PromiseGetSearchRes> execute(String keyword) {
         List<Promise> listPromise = promiseRepository.findByTitleContaining(keyword);
 
         return listPromise.stream()
-                .map(promiseConverter::toListDto)
+                .map(promiseConverter::toDtoSearch)
                 .collect(Collectors.toList());
     }
 }

@@ -5,6 +5,7 @@ import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetRes;
+import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetSearchRes;
 import com.wandering.Do.domain.promise.util.PromiseConverter;
 import com.wandering.Do.domain.user.entity.User;
 import org.springframework.stereotype.Component;
@@ -40,9 +41,9 @@ public class PromiseConverterImpl implements PromiseConverter {
     public PromiseGetListRes toListDto(Promise promise) {
         return PromiseGetListRes.builder()
                 .author(promise.getUser().getName())
-                .author_school(promise.getUser().getSchool())
-                .author_grade(promise.getUser().getGrade())
                 .author_gender(promise.getUser().getGender())
+                .author_grade(promise.getUser().getGrade())
+                .author_school(promise.getUser().getSchool())
                 .id(promise.getId())
                 .title(promise.getTitle())
                 .grade(promise.getGrade())
@@ -67,6 +68,14 @@ public class PromiseConverterImpl implements PromiseConverter {
                 .maximum(promise.getMaximum())
                 .spot(promise.getSpot())
                 .tag(promise.getTags())
+                .build();
+    }
+
+    public PromiseGetSearchRes toDtoSearch(Promise promise) {
+        return PromiseGetSearchRes.builder()
+                .author(promise.getUser().getName())
+                .id(promise.getId())
+                .title(promise.getTitle())
                 .build();
     }
 }
