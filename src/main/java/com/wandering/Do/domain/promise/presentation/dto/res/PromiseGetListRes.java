@@ -15,6 +15,11 @@ import java.util.List;
 public class PromiseGetListRes {
     // user info
     private String author;
+    private String author_school;
+    private Grade author_grade;
+    private Gender author_gender;
+
+    // promise
     private Long id;
     private String title;
     private List<Grade> grade;
