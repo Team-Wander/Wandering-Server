@@ -5,6 +5,7 @@ import com.wandering.Do.domain.promise.presentation.dto.req.PromiseWriteReq;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseFilterSearchRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetListRes;
 import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetRes;
+import com.wandering.Do.domain.promise.presentation.dto.res.PromiseGetSearchRes;
 import com.wandering.Do.domain.promise.service.*;
 import com.wandering.Do.domain.user.entity.Gender;
 import com.wandering.Do.domain.user.entity.Grade;
@@ -74,8 +75,8 @@ public class PromiseController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<PromiseGetListRes>> search(@RequestParam String keyword) {
-        List<PromiseGetListRes> res = searchKeywordService.execute(keyword);
+    public ResponseEntity<List<PromiseGetSearchRes>> search(@RequestParam String keyword) {
+        List<PromiseGetSearchRes> res = searchKeywordService.execute(keyword);
         return ResponseEntity.ok(res);
     }
 
