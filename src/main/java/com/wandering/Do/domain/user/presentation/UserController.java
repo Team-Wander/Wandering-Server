@@ -2,15 +2,13 @@ package com.wandering.Do.domain.user.presentation;
 
 import com.wandering.Do.domain.user.presentation.dto.res.GetUserPromiseListRes;
 import com.wandering.Do.domain.user.presentation.dto.res.GetWhoApplyPromiseRes;
+import com.wandering.Do.domain.user.service.DeleteApplyPromiseService;
 import com.wandering.Do.domain.user.service.GetMyApplyService;
 import com.wandering.Do.domain.user.service.GetMyPromiseService;
 import com.wandering.Do.domain.user.service.GetWhoApplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +19,7 @@ public class UserController {
     private final GetMyPromiseService getMyPromiseService;
     private final GetMyApplyService getMyApplyService;
     private final GetWhoApplyService getWhoApplyService;
+    private final DeleteApplyPromiseService deleteApplyPromiseService;
     @GetMapping
     public ResponseEntity<List<GetUserPromiseListRes>> getMy() {
         List<GetUserPromiseListRes> res = getMyPromiseService.execute();
@@ -35,5 +34,10 @@ public class UserController {
     public ResponseEntity<List<GetWhoApplyPromiseRes>> getWhoApply(@PathVariable("pro_id") Long id) {
         List<GetWhoApplyPromiseRes> res = getWhoApplyService.execute(id);
         return ResponseEntity.ok(res);
+    }
+    @DeleteMapping("/{pro_id}")
+    public ResponseEntity<Void> deleteApplyPromise(@PathVariable("pro_id")Long id) {
+        deleteApplyPromiseService.execute(id);
+        return ResponseEntity.noContent().build();
     }
 }
