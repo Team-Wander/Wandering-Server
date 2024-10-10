@@ -17,6 +17,8 @@ public enum ErrorCode {
     USER_NOT_FOUND(404, "해당 유저를 찾을 수 없습니다"),
     PERMISSION_NOT_ACCESSIBLE(401, "접근할 수 없는 권한 입니다."),
     USER_NOT_MATCH(403, "이 글에 대한 접근 권한이 없습니다."),
+    NOT_INCLUDED_APPLICATION(403, "해당 유저는 약속을 신청하지 않았습니다"),
+
 
     //promise
     PROMISE_NOT_FOUND(404, "해당 글을 찾을 수 없습니다"),
