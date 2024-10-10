@@ -13,5 +13,5 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
     List<Application> findByUser(User user);
     boolean existsByPromiseAndUser(Promise promise, User user);
     List<Application> findByPromiseId(Long promiseId);
-    Optional<Application> findByPromiseIdAndUserId(Long PromiseId, UUID UserId);
+    Optional<Application> findByPromiseAndUserId(Promise promise, UUID UserId);
 }
