@@ -35,7 +35,7 @@ public class DeleteApplicantsServiceImpl implements DeleteApplicantsService {
 
 
         if (!application.getUser().getId().equals(userId)) {
-            throw new UserNotMatchException();
+            throw new NotIncludedApplicationException();
         }
 
         applicationRepository.delete(application);
