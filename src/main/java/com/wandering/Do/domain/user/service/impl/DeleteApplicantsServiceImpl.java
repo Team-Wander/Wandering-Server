@@ -26,12 +26,13 @@ public class DeleteApplicantsServiceImpl implements DeleteApplicantsService {
         Promise promise = promiseRepository.findById(promiseId)
                 .orElseThrow(PromiseNotFoundException::new);
 
-        Application application = applicationRepository.findByPromiseIdAndUserId(promiseId, userId)
-                .orElseThrow(NotIncludedApplicationException::new);
-
         if (!promise.getUser().getId().equals(user.getId())){
             throw new UserNotMatchException();
         }
+
+        Application application = applicationRepository.findByPromiseIdAndUserId(promiseId, userId)
+                .orElseThrow(NotIncludedApplicationException::new);
+
 
         if (!application.getUser().getId().equals(userId)) {
             throw new UserNotMatchException();
