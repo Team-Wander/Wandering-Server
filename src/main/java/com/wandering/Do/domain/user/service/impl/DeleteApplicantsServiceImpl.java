@@ -30,7 +30,7 @@ public class DeleteApplicantsServiceImpl implements DeleteApplicantsService {
             throw new UserNotMatchException();
         }
 
-        Application application = applicationRepository.findByPromiseIdAndUserId(promiseId, userId)
+        Application application = applicationRepository.findByPromiseAndUserId(promise, userId)
                 .orElseThrow(NotIncludedApplicationException::new);
 
 
