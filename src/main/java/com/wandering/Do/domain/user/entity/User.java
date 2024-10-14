@@ -46,13 +46,21 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Case aCase;
 
+    @Builder.Default
+    private Integer ban = 0;
+
     public void filOutInfo (UserInfoReq userInfoReq) {
         this.school = userInfoReq.getSchool();
         this.grade = userInfoReq.getGrade();
         this.spot = userInfoReq.getSpot();
     }
 
-    public void changeCase (Case aCase) {
+    public void changeCase (Case aCase, Integer ban) {
         this.aCase = aCase;
+        this.ban = ban;
+    }
+
+    public void deducted () {
+        this.ban--;
     }
 }
