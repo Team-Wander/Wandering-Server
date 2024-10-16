@@ -44,6 +44,9 @@ public class Promise {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Builder.Default
+    private Integer count = 0;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -57,5 +60,13 @@ public class Promise {
         this.tags = updateReqDto.getTags();
         this.grade = updateReqDto.getGrade();
         this.gender = updateReqDto.getGender();
+    }
+
+    public void increaseCount() {
+        this.count++;
+    }
+
+    public void decreaseCount() {
+        this.count--;
     }
 }
