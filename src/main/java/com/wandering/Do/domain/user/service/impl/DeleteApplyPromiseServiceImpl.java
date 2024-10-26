@@ -6,6 +6,7 @@ import com.wandering.Do.domain.promise.entity.Promise;
 import com.wandering.Do.domain.promise.exception.PromiseNotFoundException;
 import com.wandering.Do.domain.promise.repository.PromiseRepository;
 import com.wandering.Do.domain.user.entity.User;
+import com.wandering.Do.domain.user.exception.NotIncludedApplicationException;
 import com.wandering.Do.domain.user.service.DeleteApplyPromiseService;
 import com.wandering.Do.domain.user.util.UserUtil;
 import com.wandering.Do.global.annotation.ServiceWithTransactional;
@@ -23,8 +24,11 @@ public class DeleteApplyPromiseServiceImpl implements DeleteApplyPromiseService 
                 .orElseThrow(PromiseNotFoundException::new);
 
         Application application = applicationRepository.findByPromiseAndUserId(promise, user.getId())
-                .orElseThrow(PromiseNotFoundException::new);
+                .orElseThrow(NotIncludedApplicationException::new);
 
-        applicationRepository.delete(application);
+        if (application != null) {
+            promise.decreaseCount();
+            applicationRepository.delete(application);
+        }
     }
 }
