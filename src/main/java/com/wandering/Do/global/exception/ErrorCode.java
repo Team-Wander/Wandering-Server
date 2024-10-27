@@ -28,6 +28,7 @@ public enum ErrorCode {
     INVALID_DATE(400, "날짜는 현재보다 이전일 수 없습니다."),
     ILLEGAL_ARGUMENT(400, "자신의 약속에 신청할 수 없습니다"),
     ALREADY_APPLIED(400, "이미 신청한 약속 입니다"),
+    LIMIT_EXCEEDED(400, "해당 글 신청인원이 다 찼습니다."),
 
     // report
     NOT_EMPTY_REASON(400, "신고사유는 공란일 수 없습니다."),
