@@ -68,6 +68,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.PATCH, "/home/{pro_id}").authenticated()
 
                                 .requestMatchers(HttpMethod.GET, "/my").authenticated()
+                                .requestMatchers(HttpMethod.POST, "/my").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/my/reservation").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/my/{pro_id}/info").authenticated()
                                 .requestMatchers(HttpMethod.DELETE, "/my/{pro_id}").authenticated()
