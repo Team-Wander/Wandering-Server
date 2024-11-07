@@ -18,5 +18,6 @@ public class ImageUploadServiceImpl implements ImageUploadService {
     public ImageUploadRes execute(MultipartFile image) {
 
         String img_url = s3Util.imageUpload(image);
-        return imageConverter.toDto(img_url);    }
+        return imageConverter.toDto(img_url);
+    }
 }

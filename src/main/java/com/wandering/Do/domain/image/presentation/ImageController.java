@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 @RequestMapping("/my")
 public class ImageController {
+
     private final ImageUploadService imageUploadService;
 
     @PostMapping
