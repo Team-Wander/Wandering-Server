@@ -17,7 +17,7 @@ import java.util.UUID;
 @Component
 @RequiredArgsConstructor
 public class S3Util {
-    @Value("{cloud.aws.s3.bucket}")
+    @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
     private final AmazonS3 amazonS3;
