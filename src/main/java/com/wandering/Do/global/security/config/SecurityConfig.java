@@ -1,5 +1,6 @@
 package com.wandering.Do.global.security.config;
 
+import com.wandering.Do.domain.user.entity.Authority;
 import com.wandering.Do.global.security.filter.JwtFilter;
 import com.wandering.Do.global.security.handler.JwtAccessDeniedHandler;
 import com.wandering.Do.global.security.handler.JwtAuthenticationEntryPoint;
@@ -73,12 +74,12 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.DELETE, "/my/{pro_id}").authenticated()
                                 .requestMatchers(HttpMethod.DELETE, "/my/{pro_id}/{user_id}").authenticated()
 
-                                .requestMatchers(HttpMethod.GET, "/admin/dec_info").authenticated()
-                                .requestMatchers(HttpMethod.GET, "/admin/{dec_id}").authenticated()
-                                .requestMatchers(HttpMethod.DELETE, "/admin/{dec_id}").authenticated()
-                                .requestMatchers(HttpMethod.GET, "/admin/user_info").authenticated()
-                                .requestMatchers(HttpMethod.GET, "/admin").authenticated()
-                                .requestMatchers(HttpMethod.PATCH, "/admin/{user_id}").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/admin/dec_info").hasAnyAuthority(Authority.ADMIN.name())
+                                .requestMatchers(HttpMethod.GET, "/admin/{dec_id}").hasAnyAuthority(Authority.ADMIN.name())
+                                .requestMatchers(HttpMethod.DELETE, "/admin/{dec_id}").hasAnyAuthority(Authority.ADMIN.name())
+                                .requestMatchers(HttpMethod.GET, "/admin/user_info").hasAnyAuthority(Authority.ADMIN.name())
+                                .requestMatchers(HttpMethod.GET, "/admin").hasAnyAuthority(Authority.ADMIN.name())
+                                .requestMatchers(HttpMethod.PATCH, "/admin/{user_id}").hasAnyAuthority(Authority.ADMIN.name())
                 )
 
                 .addFilterBefore(new JwtFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
