@@ -52,7 +52,9 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests((authorizeRequests) ->
                         authorizeRequests
-                                       
+
+                                .requestMatchers("/actuator/health").permitAll()
+
                                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
                                 .requestMatchers(HttpMethod.PATCH, "/auth").permitAll()
                                 .requestMatchers(HttpMethod.DELETE, "/auth").authenticated()
