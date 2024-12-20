@@ -19,7 +19,6 @@ public enum ErrorCode {
     USER_NOT_MATCH(403, "이 글에 대한 접근 권한이 없습니다."),
     NOT_INCLUDED_APPLICATION(403, "해당 유저는 약속을 신청하지 않았습니다"),
 
-
     //promise
     PROMISE_NOT_FOUND(404, "해당 글을 찾을 수 없습니다"),
     INVALID_TAG_COUNT(400, "최대 2개 까지 선택 가능합니다"),
@@ -33,7 +32,10 @@ public enum ErrorCode {
     // report
     NOT_EMPTY_REASON(400, "신고사유는 공란일 수 없습니다."),
     PROMISE_ALREADY_REPORT(400, "이미 신고된 글입니다."),
-    NOT_FOUND_REPORT(404, "해당 신고글을 찾을 수 없습니다.");
+    NOT_FOUND_REPORT(404, "해당 신고글을 찾을 수 없습니다."),
+
+    //image
+    FILE_EXTENSION_INVALID(400, "파일 확장자가 유효하지 않습니다.");
 
     private final int httpStatus;
     private final String message;
