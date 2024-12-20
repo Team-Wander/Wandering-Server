@@ -18,15 +18,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ChangeUserCaseServiceImpl implements ChangeUserCaseService {
 
-    private final UserUtil userUtil;
     private final UserRepository userRepository;
 
     public void execute(UUID userId, ChangeUserCase changeUserCase) {
-        User user = userUtil.getCurrentUser();
-
-        if (user.getAuthority() != Authority.ADMIN) {
-            throw new UserNotMatchException();
-        }
 
         User member = userRepository.findById(userId)
                 .orElseThrow(UserNotFoundException::new);
